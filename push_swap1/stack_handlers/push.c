@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 14:38:21 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/09/10 15:12:31 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/09/16 11:27:43 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	push_a(t_stack *a_top, t_stack *b_top)
 	a_top->next = b_top;
 	if (b_top != NULL)
 		b_top->previous = a_top;
+	write(1, "pa\n", 3);
 	return (0);
 }
 
@@ -33,5 +34,6 @@ int	push_b(t_stack *a_top, t_stack *b_top)
 	b_top->next = a_top;
 	if (a_top != NULL)
 		a_top->previous = b_top;
+	write(1, "pb\n", 3);
 	return (0);
 }
