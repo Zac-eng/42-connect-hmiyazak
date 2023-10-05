@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 12:22:02 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/03 14:54:11 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/03 18:17:40 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <sys/uio.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
 
 typedef struct s_stack
 {
@@ -34,6 +35,8 @@ int		swap(t_stack *stack_top);
 int		swap_s(t_stack *a_top, t_stack *b_top);
 int		rotate(t_stack *stack_top);
 int		rotate_r(t_stack *a_top, t_stack *b_top);
+int		rotate_a(t_stack *a_top);
+int		rotate_b(t_stack *b_top);
 
 
 #endif

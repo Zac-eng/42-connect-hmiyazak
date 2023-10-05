@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:18:49 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/03 15:16:34 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/05 11:56:27 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,22 +55,22 @@ static t_stack	*process_single_arg(char *argument)
 static t_stack	*process_multiple_arg(int argc, char **argv)
 {
 	int		iterator;
-	t_stack	*last_element;
-	t_stack	*first_element;
+	t_stack	*last_elem;
+	t_stack	*first_elem;
 
 	iterator = 1;
-	last_element = NULL;
-	first_element = NULL;
+	last_elem = NULL;
+	first_elem = NULL;
 	while (iterator < argc)
 	{
-		last_element = generate_element(last_element, atoi_or_exit(argv[iterator]));
-		if (last_element == NULL)
+		last_elem = generate_element(last_elem, atoi_or_exit(argv[iterator]));
+		if (last_elem == NULL)
 			exit(1);
-		if (first_element == NULL)
-			first_element = last_element;
+		if (first_elem == NULL)
+			first_elem = last_elem;
 		iterator += 1;
 	}
-	return (first_element);
+	return (first_elem);
 }
 
 static int	atoi_or_exit(char *should_num)
@@ -78,17 +78,20 @@ static int	atoi_or_exit(char *should_num)
 	int	return_num;
 
 	return_num = 0;
-	if ('0' <= *should_num && *should_num <= '9')
+	while (*should_num != '\0')
 	{
-		return_num = return_num * 10 + (*should_num - '0');
-		should_num += 1;
-	}
-	else if (ft_isspace(*should_num) == 1)
-		return (return_num);
-	else
-	{
-		write(1, "Error\n", 6);
-		exit(1);
+		if ('0' <= *should_num && *should_num <= '9')
+		{
+			return_num = return_num * 10 + (*should_num - '0');
+			should_num += 1;
+		}
+		else if (ft_isspace(*should_num) == 1)
+			return (return_num);
+		else
+		{
+			write(1, "Error\n", 6);
+			exit(1);
+		}
 	}
 	return (return_num);
 }

@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:25:38 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/09/10 14:37:33 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/05 15:15:21 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,16 @@ t_stack	*generate_element(t_stack *previous, int stack_content)
 
 	new_element = (t_stack *)malloc(sizeof(t_stack *) * 1);
 	if (new_element == NULL)
-		return (NULL);
-	if (previous != NULL)
-		previous->next = new_element;
+		exit(1);
+	printf("%p, %p\n", new_element, previous);
 	new_element->body = stack_content;
 	new_element->previous = previous;
 	new_element->next = NULL;
+	if (previous != NULL)
+	{
+		previous->next = new_element;
+		printf("%p, %p\n\n", previous, previous->next);
+	}
 	return (new_element);
 }
 
