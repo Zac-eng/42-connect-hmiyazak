@@ -6,31 +6,31 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 15:13:57 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/09/30 15:30:44 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:02:17 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	rotate(t_stack *stack_top)
+int	rotate(t_node *node_top)
 {
-	t_stack	*current_position;
+	t_node	*current_position;
 
-	if (stack_top == NULL || stack_top->next == NULL)
+	if (node_top == NULL || node_top->next == NULL)
 		return (0);
-	if (stack_top->previous != NULL)
+	if (node_top->previous != NULL)
 		return (-1);
-	current_position = stack_top->next;
-	stack_top->next->previous = NULL;
-	stack_top->next = NULL;
+	current_position = node_top->next;
+	node_top->next->previous = NULL;
+	node_top->next = NULL;
 	while (current_position->next != NULL)
 		current_position = current_position->next;
-	current_position->next = stack_top;
-	stack_top->previous = current_position;
+	current_position->next = node_top;
+	node_top->previous = current_position;
 	return (0);
 }
 
-int	rotate_a(t_stack *a_top)
+int	rotate_a(t_node *a_top)
 {
 	int	result;
 
@@ -40,7 +40,7 @@ int	rotate_a(t_stack *a_top)
 	return (result);
 }
 
-int	rotate_b(t_stack *b_top)
+int	rotate_b(t_node *b_top)
 {
 	int	result;
 
@@ -50,7 +50,7 @@ int	rotate_b(t_stack *b_top)
 	return (result);
 }
 
-int	rotate_r(t_stack *a_top, t_stack *b_top)
+int	rotate_r(t_node *a_top, t_node *b_top)
 {
 	int	result_a;
 	int	result_b;

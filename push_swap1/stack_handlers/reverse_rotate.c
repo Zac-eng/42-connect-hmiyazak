@@ -6,31 +6,31 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 17:21:00 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/09/16 11:42:27 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:02:34 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	reverse_rotate(t_stack *stack_top)
+int	reverse_rotate(t_node *node_top)
 {
-	t_stack	*current_position;
+	t_node	*current_position;
 
-	if (stack_top == NULL || stack_top->next == NULL)
+	if (node_top == NULL || node_top->next == NULL)
 		return (0);
-	if (stack_top->previous != NULL)
+	if (node_top->previous != NULL)
 		return (-1);
-	current_position = stack_top;
+	current_position = node_top;
 	while (current_position->next->next != NULL)
 		current_position = current_position->next;
-	current_position->next->next = stack_top;
+	current_position->next->next = node_top;
 	current_position->next->previous = NULL;
-	stack_top->previous = current_position->next;
+	node_top->previous = current_position->next;
 	current_position->next = NULL;
 	return (0);
 }
 
-int	rev_rotate_a(t_stack *a_top)
+int	rev_rotate_a(t_node *a_top)
 {
 	int	result;
 
@@ -40,7 +40,7 @@ int	rev_rotate_a(t_stack *a_top)
 	return (result);
 }
 
-int	rev_rotate_b(t_stack *b_top)
+int	rev_rotate_b(t_node *b_top)
 {
 	int	result;
 
@@ -50,7 +50,7 @@ int	rev_rotate_b(t_stack *b_top)
 	return (result);
 }
 
-int	rev_rotate_r(t_stack *a_top, t_stack *b_top)
+int	rev_rotate_r(t_node *a_top, t_node *b_top)
 {
 	int	result;
 

@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 12:22:02 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/03 18:17:40 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:03:13 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,30 @@
 # include <stdlib.h>
 # include <stdio.h>
 
+typedef struct s_node
+{
+	struct s_node	*previous;
+	int				body;
+	struct s_node	*next;
+}	t_node;
+
 typedef struct s_stack
 {
-	struct s_stack	*previous;
-	int				body;
-	struct s_stack	*next;
+	t_node	*top;
+	t_node	*bottom;
 }	t_stack;
 
-t_stack	*create_stack(int argc, char **argv);
-t_stack	*generate_element(t_stack *previous, int stack_content);
-int		swap_element(t_stack *first, t_stack *second);
-int		push_a(t_stack *a_top, t_stack *b_top);
-int		push_b(t_stack *a_top, t_stack *b_top);
-int		swap(t_stack *stack_top);
-int		swap_s(t_stack *a_top, t_stack *b_top);
-int		rotate(t_stack *stack_top);
-int		rotate_r(t_stack *a_top, t_stack *b_top);
-int		rotate_a(t_stack *a_top);
-int		rotate_b(t_stack *b_top);
+t_node	*create_node(int argc, char **argv);
+t_node	*generate_element(t_node *previous, int node_content);
+int		swap_element(t_node *first, t_node *second);
+int		push_a(t_node *a_top, t_node *b_top);
+int		push_b(t_node *a_top, t_node *b_top);
+int		swap(t_node *node_top);
+int		swap_s(t_node *a_top, t_node *b_top);
+int		rotate(t_node *node_top);
+int		rotate_r(t_node *a_top, t_node *b_top);
+int		rotate_a(t_node *a_top);
+int		rotate_b(t_node *b_top);
 
 
 #endif

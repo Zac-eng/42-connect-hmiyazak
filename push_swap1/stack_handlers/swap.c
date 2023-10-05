@@ -6,24 +6,24 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 14:24:16 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/09/16 11:41:55 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:02:33 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	swap(t_stack *stack_top)
+int	swap(t_node *node_top)
 {
 	int	result;
 
-	if (stack_top == NULL || stack_top->next == NULL
-		|| stack_top->previous != NULL)
+	if (node_top == NULL || node_top->next == NULL
+		|| node_top->previous != NULL)
 		return (-1);
-	result = swap_element(stack_top, stack_top->next);
+	result = swap_element(node_top, node_top->next);
 	return (result);
 }
 
-int	swap_a(t_stack *a_top)
+int	swap_a(t_node *a_top)
 {
 	int	result;
 
@@ -33,7 +33,7 @@ int	swap_a(t_stack *a_top)
 	return (result);
 }
 
-int	swap_b(t_stack *b_top)
+int	swap_b(t_node *b_top)
 {
 	int	result;
 
@@ -43,7 +43,7 @@ int	swap_b(t_stack *b_top)
 	return (result);
 }
 
-int	swap_s(t_stack *a_top, t_stack *b_top)
+int	swap_s(t_node *a_top, t_node *b_top)
 {
 	int	result;
 

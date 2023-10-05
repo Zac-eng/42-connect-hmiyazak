@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_stack.c                                     :+:      :+:    :+:   */
+/*   create_node.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:18:49 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/05 11:56:27 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:02:36 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 static int		atoi_or_exit(char *charactor);
 static int		ft_isspace(char c);
-static t_stack	*process_single_arg(char *argument);
-static t_stack	*process_multiple_arg(int argc, char **argv);
+static t_node	*process_single_arg(char *argument);
+static t_node	*process_multiple_arg(int argc, char **argv);
 
-t_stack	*create_stack(int argc, char **argv)
+t_node	*create_node(int argc, char **argv)
 {
 	if (argc == 1)
 		return (NULL);
@@ -27,10 +27,10 @@ t_stack	*create_stack(int argc, char **argv)
 		return (process_multiple_arg(argc, argv));
 }
 
-static t_stack	*process_single_arg(char *argument)
+static t_node	*process_single_arg(char *argument)
 {
-	t_stack	*top_element_ptr;
-	t_stack	*current_ptr;
+	t_node	*top_element_ptr;
+	t_node	*current_ptr;
 
 	top_element_ptr = NULL;
 	current_ptr = NULL;
@@ -52,11 +52,11 @@ static t_stack	*process_single_arg(char *argument)
 	return (top_element_ptr);
 }
 
-static t_stack	*process_multiple_arg(int argc, char **argv)
+static t_node	*process_multiple_arg(int argc, char **argv)
 {
 	int		iterator;
-	t_stack	*last_elem;
-	t_stack	*first_elem;
+	t_node	*last_elem;
+	t_node	*first_elem;
 
 	iterator = 1;
 	last_elem = NULL;

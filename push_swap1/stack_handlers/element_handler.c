@@ -6,21 +6,21 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:25:38 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/05 15:15:21 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:02:55 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_stack	*generate_element(t_stack *previous, int stack_content)
+t_node	*generate_element(t_node *previous, int node_content)
 {
-	t_stack	*new_element;
+	t_node	*new_element;
 
-	new_element = (t_stack *)malloc(sizeof(t_stack *) * 1);
+	new_element = (t_node *)malloc(sizeof(t_node *) * 1);
 	if (new_element == NULL)
 		exit(1);
 	printf("%p, %p\n", new_element, previous);
-	new_element->body = stack_content;
+	new_element->body = node_content;
 	new_element->previous = previous;
 	new_element->next = NULL;
 	if (previous != NULL)
@@ -31,7 +31,7 @@ t_stack	*generate_element(t_stack *previous, int stack_content)
 	return (new_element);
 }
 
-int	swap_element(t_stack *first, t_stack *second)
+int	swap_element(t_node *first, t_node *second)
 {
 	if (first == NULL || second == NULL)
 		return (-1);

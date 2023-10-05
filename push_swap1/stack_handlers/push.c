@@ -6,13 +6,13 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 14:38:21 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/09/16 11:27:43 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:02:35 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	push_a(t_stack *a_top, t_stack *b_top)
+int	push_a(t_node *a_top, t_node *b_top)
 {
 	if (a_top == NULL || a_top->previous != NULL)
 		return (-1);
@@ -25,7 +25,7 @@ int	push_a(t_stack *a_top, t_stack *b_top)
 	return (0);
 }
 
-int	push_b(t_stack *a_top, t_stack *b_top)
+int	push_b(t_node *a_top, t_node *b_top)
 {
 	if (b_top == NULL || b_top->previous != NULL)
 		return (-1);
