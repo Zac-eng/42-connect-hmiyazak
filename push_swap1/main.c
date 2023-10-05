@@ -6,25 +6,18 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 12:22:07 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/05 16:03:53 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/05 21:18:54 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-t_node	*generate_element(t_node *previous, int node_content);
 #include <stdio.h>
 
 int	main(int argc, char *argv[])
 {
-	t_node	*first_element;
-	t_node	*second_element;
-	t_node	*third_element;
+	t_stack	*stack_a;
+	//t_stack	*stack_b;
 
-	printf("%d, %s\n", argc, argv[0]);
-	first_element = generate_element(NULL, 5);
-	second_element = generate_element(first_element, 4);
-	third_element = generate_element(second_element, 9);
-	printf("%d\n", rotate_a(first_element));
+	stack_a = create_stack(argc, &argv[0]);
 	return (0);
 }

@@ -6,14 +6,14 @@
 #    By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/03 12:17:42 by hmiyazak          #+#    #+#              #
-#    Updated: 2023/10/05 16:02:38 by hmiyazak         ###   ########.fr        #
+#    Updated: 2023/10/05 21:19:43 by hmiyazak         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-SRCS = main.c create_stack.c stack_handlers/*.c
+SRCS = main.c input_handlers/*.c 
 LIBFT = libft.a
 LIBFTDIR = libft
 RM = rm -rf
