@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 20:18:50 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/05 21:36:17 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/05 21:56:55 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ t_stack	*create_stack(int argc, char **argv)
 	stack = (t_stack *)malloc(sizeof(t_stack) * 1);
 	if (stack == NULL)
 		exit(1);
-	return (NULL);
+	stack->max_size = node_num;
+	// create_node(node_num, node_list, stack->top, stack->bottom);
+	return (stack);
 }
 
 static int	count_node(int argc, char **argv)
