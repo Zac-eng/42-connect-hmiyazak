@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 21:43:29 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/05 22:36:16 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/06 13:55:10 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,3 @@ t_node	*generate_element(t_node *previous, int node_content)
 		previous->next = new_element;
 	return (new_element);
 }
-

@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 20:44:12 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/05 21:35:04 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/06 13:56:17 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,8 @@ void	compress_list(int list_size, int *to_be_compressed)
 		exit(1);
 	copy_list(list_size, sorted_list, to_be_compressed);
 	sort_list(list_size, sorted_list);
-	printf("%d\n", sorted_list[0]);
-	printf("%d\n", sorted_list[1]);
-	printf("%d\n", sorted_list[2]);
-	printf("%d\n", sorted_list[3]);
-	printf("%d\n", sorted_list[4]);
 	rank_list(list_size, to_be_compressed, sorted_list);
+	free(sort_list);
 }
 
 static void	copy_list(int list_size, int *destination, int *template)

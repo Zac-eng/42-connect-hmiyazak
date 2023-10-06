@@ -6,13 +6,14 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 20:18:50 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/05 21:56:55 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/06 14:02:18 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static int	count_node(int argc, char **argv);
+static int		count_node(int argc, char **argv);
+static t_stack	*initialize_stack(int node_num);
 
 t_stack	*create_stack(int argc, char **argv)
 {
@@ -26,12 +27,22 @@ t_stack	*create_stack(int argc, char **argv)
 		exit(1);
 	create_input_list(argc, argv, node_list);
 	compress_list(node_num, node_list);
-	stack = (t_stack *)malloc(sizeof(t_stack) * 1);
+	stack = initialize_stack(node_num);
+	return (stack);
+}
+
+static t_stack	*initialize_stack(int node_num)
+{
+	t_stack	*new_stack;
+
+	new_stack = (t_stack *)malloc(sizeof(t_stack) * 1);
 	if (stack == NULL)
 		exit(1);
+	stack->current_size = 0;
 	stack->max_size = node_num;
-	// create_node(node_num, node_list, stack->top, stack->bottom);
-	return (stack);
+	stack->top = NULL;
+	stack->bottom = NULL;
+	return (new_stack);
 }
 
 static int	count_node(int argc, char **argv)
@@ -53,7 +64,7 @@ static int	count_node(int argc, char **argv)
 				num_set += 1;
 			if (*num_set != '\0')
 				node_num += 1;
-			while (ft_isspace(*num_set) == 0)
+			while (ft_isspace(*num_set) == 0 && *num_set != '\0')
 				num_set += 1;
 		}
 		return (node_num);
