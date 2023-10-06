@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 12:22:07 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/05 22:36:22 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/06 18:11:39 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int	main(int argc, char *argv[])
 	printf("%p, %p, %p\n", node2, node2->previous, node2->next);
 	printf("%p, %p, %p\n", node3, node3->previous, node3->next);
 	printf("%p, %p, %p\n", node4, node4->previous, node4->next);
-
 
 	stack_a = create_stack(argc, &argv[0]);
 	return (0);

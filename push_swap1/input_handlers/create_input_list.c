@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 20:25:14 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/05 21:30:38 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/06 18:09:45 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	atoi_or_exit(char *should_num)
 			return (return_num);
 		else
 		{
-			write(1, "Error\n", 6);
+			write(2, "Error\n", 6);
 			exit(1);
 		}
 	}

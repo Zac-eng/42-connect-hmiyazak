@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 14:37:03 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/06 15:00:58 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/06 18:04:20 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	pop_top(t_stack *stack)
 	poped_node = stack->top;
 	poped_element = poped_node->body;
 	stack->top = poped_node->next;
-	poped_node->next->previous = NULL;
+	stack->top->previous = NULL;
 	stack->size -= 1;
 	free(poped_node);
 	return (poped_element);
@@ -64,7 +64,7 @@ int	pop_bottom(t_stack *stack)
 	poped_node = stack->bottom;
 	poped_element = poped_node->body;
 	stack->bottom = poped_node->previous;
-	poped_node->previous->next = NULL;
+	stack->bottom->next = NULL;
 	stack->size -= 1;
 	free(poped_node);
 	return (poped_element);
