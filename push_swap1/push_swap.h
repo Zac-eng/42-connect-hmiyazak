@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 12:22:02 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/06 18:04:57 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/06 18:22:42 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,10 @@ t_node	*generate_element(t_node *previous, int node_content);
 t_stack	*create_stack(int argc, char **argv);
 void	create_input_list(int argc, char **argv, int *foundation);
 void	compress_list(int list_size, int *to_be_compressed);
-void	push(t_stack *stack, int new_element);
-void	pop(t_stack *stack);
+void	push_top(t_stack *stack, int new_element);
+void	push_bottom(t_stack *stack, int new_element);
+int		pop_top(t_stack *stack);
+int		pop_bottom(t_stack *stack);
 int		atoi_or_exit(char *should_num);
 int		ft_isspace(char c);
 

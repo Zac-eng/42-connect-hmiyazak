@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 20:18:50 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/06 18:11:01 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/06 19:09:14 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ t_stack	*create_stack(int argc, char **argv)
 	t_stack	*stack;
 	int		node_num;
 	int		*node_list;
+	int		iterator;
 
+	iterator = 0;
 	node_num = count_node(argc, argv);
 	node_list = (int *)malloc(sizeof(int) * node_num);
 	if (node_list == NULL)
@@ -28,6 +30,11 @@ t_stack	*create_stack(int argc, char **argv)
 	create_input_list(argc, argv, node_list);
 	compress_list(node_num, node_list);
 	stack = initialize_stack(node_num);
+	while (iterator < node_num)
+	{
+		push_top(stack, node_list[iterator]);
+		iterator += 1;
+	}
 	return (stack);
 }
 
