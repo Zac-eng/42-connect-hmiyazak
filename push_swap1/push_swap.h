@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 12:22:02 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/06 18:22:42 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/09 22:57:29 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,26 @@ typedef struct s_stack
 	int		max_size;
 }	t_stack;
 
-t_node	*create_node(int argc, char **argv);
-t_node	*generate_element(t_node *previous, int node_content);
-t_stack	*create_stack(int argc, char **argv);
+t_stack	*create_stack(int node_num, int argc, char **argv);
+t_stack	*initialize_stack(int node_num);
 void	create_input_list(int argc, char **argv, int *foundation);
 void	compress_list(int list_size, int *to_be_compressed);
 void	push_top(t_stack *stack, int new_element);
 void	push_bottom(t_stack *stack, int new_element);
 int		pop_top(t_stack *stack);
 int		pop_bottom(t_stack *stack);
+void	sa(t_stack *a);
+void	sb(t_stack *b);
+void	ss(t_stack *a, t_stack *b);
+void	pa(t_stack *stack_a, t_stack *stack_b);
+void	pb(t_stack *stack_a, t_stack *stack_b);
+void	ra(t_stack *stack_a);
+void	rb(t_stack *stack_b);
+void	rr(t_stack *stack_a, t_stack *stack_b);
+void	rra(t_stack *stack_a);
+void	rrb(t_stack *stack_b);
+void	rrr(t_stack *stack_a, t_stack *stack_b);
+void	free_stack(t_stack *should_be_free);
 int		atoi_or_exit(char *should_num);
 int		ft_isspace(char c);
 

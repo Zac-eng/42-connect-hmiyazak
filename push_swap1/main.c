@@ -6,49 +6,75 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 12:22:07 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/06 19:24:54 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/09 23:00:14 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
+
+static int	count_node(int argc, char **argv);
 
 int	main(int argc, char *argv[])
 {
 	t_stack	*stack_a;
-	//t_stack	*stack_b;
+	t_stack	*stack_b;
+	int		node_num;
 
-	// t_node	*node1 = generate_element(NULL, 1);
-	// printf("%p, %p, %p\n", node1, node1->previous, node1->next);
-	// t_node	*node2 = generate_element(node1, 2);
-	// printf("%p, %p, %p\n", node2, node2->previous, node2->next);
-	// t_node	*node3 = generate_element(node2, 3);
-	// printf("%p, %p, %p\n", node3, node3->previous, node3->next);
-	// t_node	*node4 = generate_element(node3, 4);
-	// printf("%p, %p, %p\n\n", node4, node4->previous, node4->next);
-
-	// printf("%p, %p, %p\n", node1, node1->previous, node1->next);
-	// printf("%p, %p, %p\n", node2, node2->previous, node2->next);
-	// printf("%p, %p, %p\n", node3, node3->previous, node3->next);
-	// printf("%p, %p, %p\n", node4, node4->previous, node4->next);
-
-	stack_a = create_stack(argc, &argv[0]);
-	// while (stack_a->top)
-	// {
-	// 	printf("node: %d\n", stack_a->top->body);
-	// 	printf("%p, %p, %p, %p\n\n", stack_a->top, stack_a->top->previous, stack_a->top->previous->previous, stack_a->top->previous->previous->previous);
-	// 	stack_a->top = stack_a->top->previous;
-	// }
-	printf("%p, %p, %p\n", stack_a->top, stack_a->bottom, stack_a);
-	printf("%p, %p, %p\n", stack_a->top->previous, stack_a->top->previous->next, stack_a->bottom->next->next);
+	node_num = count_node(argc, &argv[0]);
+	stack_a = create_stack(node_num, argc, &argv[0]);
+	stack_b = initialize_stack(node_num);
+	// if (node_num == 3)
+	// 	three_nodes_operation(stack_a);
+	// else if (node_num == 5)
+	// 	five_nodes_operation(stack_a);
+	// else
+	// 	many_nodes_operation(stack_a, stack_b);
+	pb(stack_a, stack_b);
+	pb(stack_a, stack_b);
+	pb(stack_a, stack_b);
+	printf("%d\n", stack_b->top->body);
+	free_stack(stack_a);
+	free_stack(stack_b);
 	return (0);
 }
 
-// int	main(int argc, char *argv[])
-// {
-// 	t_stack	*stack_a;
-// 	//t_stack	*stack_b;
+static int	count_node(int argc, char **argv)
+{
+	int		node_num;
+	char	*num_set;
 
-// 	stack_a = create_stack(argc, &argv[0]);
-// 	return (0);
-// }
+	node_num = 0;
+	num_set = argv[1];
+	if (argc <= 1)
+		exit(0);
+	else if (argc > 2)
+		return (argc - 1);
+	else
+	{
+		while (*num_set != '\0')
+		{
+			while (ft_isspace(*num_set) == 1)
+				num_set += 1;
+			if (*num_set != '\0')
+				node_num += 1;
+			while (ft_isspace(*num_set) == 0 && *num_set != '\0')
+				num_set += 1;
+		}
+		return (node_num);
+	}
+}
+
+void	free_stack(t_stack *should_be_free)
+{
+	t_node	*current_position;
+
+	if (should_be_free == NULL)
+		return ;
+	while (should_be_free->top)
+	{
+		current_position = should_be_free->top;
+		should_be_free->top = current_position->previous;
+		free(current_position);
+	}
+	free(should_be_free);
+}
