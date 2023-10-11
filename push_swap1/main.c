@@ -6,13 +6,14 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 12:22:07 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/11 22:11:46 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/11 22:39:01 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 static int	count_node(int argc, char **argv);
+static void	free_stack(t_stack *should_be_free);
 
 int	main(int argc, char *argv[])
 {
@@ -29,6 +30,11 @@ int	main(int argc, char *argv[])
 	// 	five_nodes_operation(stack_a);
 	// else
 	// 	many_nodes_operation(stack_a, stack_b);
+	while (stack_a->top)
+	{
+		printf("%d\n", stack_a->top->body);
+		stack_a->top = stack_a->top->previous;
+	}
 	free_stack(stack_a);
 	free_stack(stack_b);
 	return (0);
@@ -60,7 +66,7 @@ static int	count_node(int argc, char **argv)
 	}
 }
 
-void	free_stack(t_stack *should_be_free)
+static void	free_stack(t_stack *should_be_free)
 {
 	t_node	*current_position;
 

@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 20:25:14 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/11 21:32:57 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/11 22:39:07 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 void		create_input_list(int argc, char **argv, int *foundation);
 static void	process_single_arg(char *argument, int *foundation);
 static void	process_multiple_arg(int argc, char **argv, int *foundation);
-int			atoi_or_exit(char *should_num);
-int			ft_isspace(char c);
 
 void	create_input_list(int argc, char **argv, int *foundation)
 {
@@ -57,36 +55,4 @@ static void	process_multiple_arg(int argc, char **argv, int *foundation)
 		foundation[index] = atoi_or_exit(argv[index + 1]);
 		index += 1;
 	}
-}
-
-int	atoi_or_exit(char *should_num)
-{
-	int	return_num;
-
-	return_num = 0;
-	while (*should_num != '\0')
-	{
-		if ('0' <= *should_num && *should_num <= '9')
-		{
-			return_num = return_num * 10 + (*should_num - '0');
-			should_num += 1;
-		}
-		else if (ft_isspace(*should_num) == 1)
-			return (return_num);
-		else
-		{
-			write(2, "Error\n", 6);
-			exit(1);
-		}
-	}
-	return (return_num);
-}
-
-int	ft_isspace(char c)
-{
-	if (c == ' ' || c == '\t' || c == '\n' || c == '\v'\
-		|| c == '\f' || c == '\r')
-		return (1);
-	else
-		return (0);
 }
