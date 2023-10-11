@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 12:22:07 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/09 23:00:14 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/11 22:11:46 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,6 @@ int	main(int argc, char *argv[])
 	// 	five_nodes_operation(stack_a);
 	// else
 	// 	many_nodes_operation(stack_a, stack_b);
-	pb(stack_a, stack_b);
-	pb(stack_a, stack_b);
-	pb(stack_a, stack_b);
-	printf("%d\n", stack_b->top->body);
 	free_stack(stack_a);
 	free_stack(stack_b);
 	return (0);
@@ -73,7 +69,7 @@ void	free_stack(t_stack *should_be_free)
 	while (should_be_free->top)
 	{
 		current_position = should_be_free->top;
-		should_be_free->top = current_position->previous;
+		should_be_free->top = should_be_free->top->previous;
 		free(current_position);
 	}
 	free(should_be_free);

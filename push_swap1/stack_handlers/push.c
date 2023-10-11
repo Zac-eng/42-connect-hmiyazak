@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 22:32:41 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/09 22:49:54 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/11 22:10:29 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ void	pb(t_stack *stack_a, t_stack *stack_b)
 		return ;
 	poped_element = pop_top(stack_a);
 	push_top(stack_b, poped_element);
-	write(1, "pb\n", 3);
+	write(1, "pb\n", 4);
 }

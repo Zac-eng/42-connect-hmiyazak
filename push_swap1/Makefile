@@ -6,7 +6,7 @@
 #    By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/03 12:17:42 by hmiyazak          #+#    #+#              #
-#    Updated: 2023/10/06 18:41:07 by hmiyazak         ###   ########.fr        #
+#    Updated: 2023/10/11 20:41:09 by hmiyazak         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,4 +37,10 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re debug
+
+ifeq ($(MAKECMDGOALS), debug)
+CFLAGS += -O0 -g3
+endif
+
+debug: re

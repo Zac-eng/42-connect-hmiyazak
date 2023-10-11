@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 14:37:03 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/09 22:43:30 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/11 22:09:35 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	push_top(t_stack *stack, int new_element)
 {
 	t_node	*new_node;
 
-	new_node = (t_node *)malloc(sizeof(t_node *) * 1);
+	new_node = (t_node *)malloc(sizeof(t_node) * 1);
 	if (stack == NULL || new_node == NULL)
 		exit(1);
 	new_node->previous = NULL;
@@ -40,7 +40,7 @@ void	push_bottom(t_stack *stack, int new_element)
 {
 	t_node	*new_node;
 
-	new_node = (t_node *)malloc(sizeof(t_node *) * 1);
+	new_node = (t_node *)malloc(sizeof(t_node) * 1);
 	if (stack == NULL || new_node == NULL)
 		exit(1);
 	new_node->previous = NULL;

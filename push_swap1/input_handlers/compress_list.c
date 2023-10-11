@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 20:44:12 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/06 18:30:10 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/10 22:52:46 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	compress_list(int list_size, int *to_be_compressed)
 {
 	int	*sorted_list;
 
-	sorted_list = (int *)malloc(list_size);
+	sorted_list = (int *)malloc(sizeof(int) * list_size);
 	if (sorted_list == NULL)
 		exit(1);
 	copy_list(list_size, sorted_list, to_be_compressed);
