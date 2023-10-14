@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 12:22:07 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/14 12:08:54 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/14 13:08:08 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int	main(int argc, char *argv[])
 	node_num = count_node(argc, &argv[0]);
 	stack_a = create_stack(node_num, argc, &argv[0]);
 	stack_b = initialize_stack(node_num);
-	// if (node_num == 3)
-	// 	three_nodes_operation(stack_a);
+	if (node_num == 3)
+		three_nodes_operation(stack_a, stack_b);
 	// else if (node_num == 5)
 	// 	five_nodes_operation(stack_a);
 	// else
