@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 20:44:12 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/11 22:39:07 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/14 13:34:31 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ static void	sort_list(int list_size, int *to_be_sorted)
 				to_be_sorted[index] = to_be_sorted[index + 1];
 				to_be_sorted[index + 1] = tmp;
 			}
+			else if (to_be_sorted[index] == to_be_sorted[index + 1])
+				error_and_exit();
 			index += 1;
 		}
 		iterator += 1;

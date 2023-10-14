@@ -6,14 +6,14 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 22:36:54 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/14 12:33:00 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/14 13:35:02 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static void	error_and_exit(void);
 static int	check_minus(char **should_num);
+void		error_and_exit(void);
 
 //admit input "-0" and "00" but decline " ", "\n", "-", and "- ".
 
@@ -63,7 +63,7 @@ static int	check_minus(char **should_num)
 	return (0);
 }
 
-static void	error_and_exit(void)
+void	error_and_exit(void)
 {
 	write(2, "Error\n", 6);
 	exit(1);
