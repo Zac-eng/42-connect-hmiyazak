@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 22:52:11 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/09 22:55:33 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/14 23:08:10 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,3 @@ void	rrr(t_stack *stack_a, t_stack *stack_b)
 	reverse_rotate(stack_b);
 	write(1, "rrr\n", 4);
 }
-

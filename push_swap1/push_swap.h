@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 12:22:02 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/14 16:59:29 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/14 21:37:20 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	rrr(t_stack *stack_a, t_stack *stack_b);
 void	smallest_nodes_operation(t_stack *stack);
 void	four_nodes_operation(t_stack *stack_a, t_stack *stack_b);
 void	five_nodes_operation(t_stack *stack_a, t_stack *stack_b);
-void	many_nodes_operation(t_stack *stack_a, t_stack *stack_b);
+void	many_nodes_operation(int node_num, t_stack *stack_a, t_stack *stack_b);
 int		atoi_or_exit(char *should_num);
 int		ft_isspace(char c);
 void	error_and_exit(void);

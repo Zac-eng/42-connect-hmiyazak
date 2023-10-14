@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 12:22:07 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/14 17:15:50 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/14 23:07:44 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,12 @@ int	main(int argc, char *argv[])
 	else if (node_num == 5)
 		five_nodes_operation(stack_a, stack_b);
 	else
-		many_nodes_operation(stack_a, stack_b);
+		many_nodes_operation(node_num, stack_a, stack_b);
+	while (stack_a->top)
+	{
+		printf("a: %d\n", stack_a->top->body);
+		stack_a->top = stack_a->top->previous;
+	}
 	free_stack(stack_a);
 	free_stack(stack_b);
 	return (0);
