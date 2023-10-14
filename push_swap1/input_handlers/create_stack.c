@@ -6,13 +6,14 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 20:18:50 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/14 12:31:44 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/14 14:18:44 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_stack	*initialize_stack(int node_num);
+t_stack		*initialize_stack(int node_num);
+static int	is_sorted(int node_num, int *input_list);
 
 t_stack	*create_stack(int node_num, int argc, char **argv)
 {
@@ -27,6 +28,8 @@ t_stack	*create_stack(int node_num, int argc, char **argv)
 	stack = initialize_stack(node_num);
 	create_input_list(argc, argv, node_list);
 	compress_list(node_num, node_list);
+	if (is_sorted(node_num, node_list) == 1)
+		exit(0);
 	while (iterator < node_num)
 	{
 		push_top(stack, node_list[iterator]);
@@ -49,4 +52,19 @@ t_stack	*initialize_stack(int node_num)
 	new_stack->top = NULL;
 	new_stack->bottom = NULL;
 	return (new_stack);
+}
+
+static int	is_sorted(int node_num, int *input_list)
+{
+	int	index;
+
+	index = 0;
+	while (index < node_num - 1)
+	{
+		if (input_list[index + 1] != input_list[index] + 1)
+			return (0);
+		else
+			index += 1;
+	}
+	return (1);
 }

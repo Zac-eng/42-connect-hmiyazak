@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 22:14:29 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/14 13:35:43 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/14 14:17:24 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,15 @@ void	three_nodes_operation(t_stack *stack_a, t_stack *stack_b)
 
 // void	five_nodes_operation(t_stack *stack_a, t_stack *stack_b)
 // {
-	
+// 	while (stack_a->top->body != 4 && stack_a->top->body != 5)
+// 		ra(stack_a);
+// 	pb(stack_a, stack_b);
+// 	while (stack_a->top->body != 4 && stack_a->top->body == 5)
+// 		ra(stack_a);
+// 	pb(stack_a, stack_b);
+// 	while (stack_a->top->body == 4 && stack_a->top->body == 5)
+// 		ra(stack_a);
+// 	pb(stack_a, stack_b);
+// 	three_nodes_operation(stack_a);
+// 	if (stack_b->top->)
 // }
