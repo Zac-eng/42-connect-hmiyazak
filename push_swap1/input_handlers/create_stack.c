@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 20:18:50 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/11 22:39:59 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/14 12:31:44 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_stack	*create_stack(int node_num, int argc, char **argv)
 	while (iterator < node_num)
 	{
 		push_top(stack, node_list[iterator]);
+		rotate(stack);
 		iterator += 1;
 	}
 	free(node_list);

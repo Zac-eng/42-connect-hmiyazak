@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 12:22:02 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/11 22:39:40 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/14 12:08:17 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	push_top(t_stack *stack, int new_element);
 void	push_bottom(t_stack *stack, int new_element);
 int		pop_top(t_stack *stack);
 int		pop_bottom(t_stack *stack);
+void	rotate(t_stack *stack);
 void	sa(t_stack *a);
 void	sb(t_stack *b);
 void	ss(t_stack *a, t_stack *b);

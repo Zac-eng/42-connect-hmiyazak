@@ -6,15 +6,15 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 22:38:34 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/09 22:56:09 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/14 12:08:33 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static void	rotate(t_stack *stack);
+void	rotate(t_stack *stack);
 
-static void	rotate(t_stack *stack)
+void	rotate(t_stack *stack)
 {
 	int	poped_element;
 

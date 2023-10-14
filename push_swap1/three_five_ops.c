@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 22:14:29 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/11 22:39:26 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/14 12:08:43 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@
 
 // 	if (first_node == 1)
 // 	{
-// 		if (second_node == 1 second_node == 2)
+// 		if (second_node == 1)
 // 			return ;
-// 		else
+// 		else if (second_node == 2)
+			
 // 	}
 // }
