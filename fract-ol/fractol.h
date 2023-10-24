@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 22:29:03 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/24 22:06:02 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/24 23:03:54 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,20 @@ typedef struct s_vars {
 	void	*win;
 }				t_vars;
 
-int		fx(int x, int y, int a);
-int		fy(int x, int y, int b);
+typedef struct s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
+
 void	show_input_choice(void);
 void	julia_operation(int z_0);
 void	mandelbrot_operation(int c);
 int		escape_close(int keycode, t_vars *vars);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	init_data(void *mlx, t_data *d);
 int		ft_strcmp(char *lhs, char *rhs);
 int		ft_atoi(char *input);
 

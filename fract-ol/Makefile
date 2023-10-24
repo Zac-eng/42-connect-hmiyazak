@@ -2,21 +2,21 @@ NAME = fractol
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 MLXFLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
-SRCS = main.c julia.c mandelbrot.c common_function.c ./utils/*.c $(PRINTF)
+SRCS = main.c julia.c mandelbrot.c common_function.c ./utils/ft_atoi.c ./utils/str_ops.c
 OBJS = $(SRCS:.c=.o)
 PRINTFDIR = ./ft_printf
 PRINTF = libftprintf.a
 RM = rm -rf
 
 %.o: %.c
-	$(CC) $(CFLAGS) $(MLXFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 #+++++general+++++
 
 all: $(NAME)
 
-$(NAME): $(PRINTF)
-	$(CC) $(CFLAGS) $(MLXFLAGS) $(SRCS) -o $@
+$(NAME): $(PRINTF) $(OBJS)
+	$(CC) $(CFLAGS) $(MLXFLAGS) $(SRCS) $(PRINTF) -o $@
 
 $(PRINTF):
 	make -C $(PRINTFDIR) all
