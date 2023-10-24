@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.h                                          :+:      :+:    :+:   */
+/*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 22:29:03 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/24 19:43:22 by hmiyazak         ###   ########.fr       */
+/*   Created: 2023/10/24 19:42:59 by hmiyazak          #+#    #+#             */
+/*   Updated: 2023/10/24 19:44:07 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTOL_H
-# define FRACTOL_H
-
-# include <mlx.h>
-# include "./ft_printf/ft_printf.h"
-
-typedef struct s_vars {
-	void	*mlx;
-	void	*win;
-}				t_vars;
-
-int		fx(int x, int y, int a);
-int		fy(int x, int y, int b);
-void	julia_operation(int c);
-void	mandelbrot_operation(int c);
-int		ft_strcmp(char *lhs, char *rhs);
-
-#endif
+void	mandelbrot_operation(int c)
+{
+	vars.mlx = mlx_init();
+	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "mandelbrot");
+	mlx_pixel_put(vars.mlx, vars.win, 960, 540, 0x00FF0000);
+	mlx_string_put(vars.mlx, vars.win, 100, 100, 0x00FFFFFF, "Good morning");
+	mlx_hook(vars.win, 2, 1L<<0, close, &vars);
+	mlx_loop(vars.mlx);
+}

@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.h                                          :+:      :+:    :+:   */
+/*   str_ops.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 22:29:03 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/24 19:43:22 by hmiyazak         ###   ########.fr       */
+/*   Created: 2023/10/18 20:16:46 by hmiyazak          #+#    #+#             */
+/*   Updated: 2023/10/23 19:46:16 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTOL_H
-# define FRACTOL_H
+#include "../fractol.h"
 
-# include <mlx.h>
-# include "./ft_printf/ft_printf.h"
-
-typedef struct s_vars {
-	void	*mlx;
-	void	*win;
-}				t_vars;
-
-int		fx(int x, int y, int a);
-int		fy(int x, int y, int b);
-void	julia_operation(int c);
-void	mandelbrot_operation(int c);
-int		ft_strcmp(char *lhs, char *rhs);
-
-#endif
+int	ft_strcmp(char *lhs, char *rhs)
+{
+	if (lhs == NULL || rhs == NULL)
+		return (-1);
+	while (*lhs != '\0' && *rhs != '\0')
+	{
+		if (*lhs != *rhs)
+			return (0);
+		lhs += 1;
+		rhs += 1;
+	}
+	if (*lhs != '\0' || *rhs != '\0')
+		return (0);
+	return (1);
+}
