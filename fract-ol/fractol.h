@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 22:29:03 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/24 23:03:54 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/26 04:07:04 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <mlx.h>
 # include <math.h>
+# include <float.h>
 # include "./ft_printf/ft_printf.h"
 
 typedef struct s_vars {
@@ -31,12 +32,12 @@ typedef struct s_data {
 }				t_data;
 
 void	show_input_choice(void);
-void	julia_operation(int z_0);
-void	mandelbrot_operation(int c);
-int		escape_close(int keycode, t_vars *vars);
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	julia_operation(double c_r, double c_i);
+void	mandelbrot_operation(double c_r, double c_i);
+void	mlx_window_options(t_vars *vars, t_data *img);
+void	put_pixel_img(t_data *data, int x, int y, int color);
 void	init_data(void *mlx, t_data *d);
 int		ft_strcmp(char *lhs, char *rhs);
-int		ft_atoi(char *input);
+double	ft_atof(char *input);
 
 #endif

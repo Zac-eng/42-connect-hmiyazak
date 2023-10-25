@@ -2,7 +2,7 @@ NAME = fractol
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 MLXFLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
-SRCS = main.c julia.c mandelbrot.c common_function.c ./utils/ft_atoi.c ./utils/str_ops.c
+SRCS = main.c julia.c mandelbrot.c common_function.c ./utils/ft_atof.c ./utils/str_ops.c
 OBJS = $(SRCS:.c=.o)
 PRINTFDIR = ./ft_printf
 PRINTF = libftprintf.a

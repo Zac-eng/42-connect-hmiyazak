@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 14:25:13 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/06/17 13:46:16 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/26 03:01:17 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <limits.h>
 # include <stdarg.h>
+# include <stdio.h>
 
 int	ft_printf(const char *main_str, ...);
 int	print_string_variable(char var_type, va_list args);
