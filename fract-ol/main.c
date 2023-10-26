@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 15:30:21 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/26 04:32:44 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/26 20:52:20 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,18 @@ static int	check_which_set(int argc, char *argv);
 int	main(int argc, char *argv[])
 {
 	int		which_set;
-	double	real_parameter;
-	double	imaginary_parameter;
+	double	parameter[2];
 
 	which_set = check_which_set(argc, argv[1]);
-	real_parameter = ft_atof(argv[2]);
-	imaginary_parameter = ft_atof(argv[3]);
-	printf("%f\n", hypot(real_parameter, imaginary_parameter));
-	if (hypot(real_parameter, imaginary_parameter) > 2)
+	parameter[0] = ft_atof(argv[2]);
+	parameter[1] = ft_atof(argv[3]);
+	printf("%f\n", hypot(parameter[0], parameter[1]));
+	if (hypot(parameter[0], parameter[1]) > 2)
 		show_input_choice();
 	if (which_set == 1)
-		julia_operation(real_parameter, imaginary_parameter);
+		julia_operation(&parameter[0]);
 	else if (which_set == 2)
-		mandelbrot_operation(real_parameter, imaginary_parameter);
+		mandelbrot_operation(&parameter[0]);
 	return (0);
 }
 
