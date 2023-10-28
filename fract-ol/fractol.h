@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 22:29:03 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/26 20:52:38 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/28 16:21:44 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ typedef struct s_data {
 }				t_data;
 
 void	show_input_choice(void);
-void	julia_operation(double *c);
-void	mandelbrot_operation(double *c);
+void	julia_operation(void);
+void	mandelbrot_operation(void);
 void	mlx_window_options(t_vars *vars, t_data *img);
 int		escape_close(int keycode, t_vars *vars);
 int		cross_close(int keycode);

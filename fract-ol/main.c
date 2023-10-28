@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 15:30:21 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/26 20:52:20 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/28 16:21:59 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ int	main(int argc, char *argv[])
 	which_set = check_which_set(argc, argv[1]);
 	parameter[0] = ft_atof(argv[2]);
 	parameter[1] = ft_atof(argv[3]);
-	printf("%f\n", hypot(parameter[0], parameter[1]));
+	printf("%f, %f\n", parameter[0], parameter[1]);
 	if (hypot(parameter[0], parameter[1]) > 2)
 		show_input_choice();
 	if (which_set == 1)
-		julia_operation(&parameter[0]);
+		julia_operation();
 	else if (which_set == 2)
-		mandelbrot_operation(&parameter[0]);
+		mandelbrot_operation();
 	return (0);
 }
 
