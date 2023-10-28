@@ -6,14 +6,14 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 22:28:42 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/28 17:12:11 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/28 17:31:41 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
 static void	create_julia_image(t_data *img, int *size);
-static int	isin_julia(double *c);
+static int	return_color(double *c);
 
 void	julia_operation(void)
 {
@@ -36,24 +36,16 @@ static void	create_julia_image(t_data *img, int *size)
 {
 	double	c[2];
 	int		iter[2];
-	int		one_side;
 
 	iter[0] = 0;
 	iter[1] = 0;
-	if (size[0] < size[1])
-		one_side = size[0];
-	else
-		one_side = size[1];
 	while (iter[0] < size[0])
 	{
 		while (iter[1] < size[1])
 		{
-			c[0] = -2.0 + (double)iter[0] * 4.0 / (double)one_side;
-			c[1] = 2.0 - (double)iter[1] * 4.0 / (double)one_side;
-			if (isin_julia(&c[0]) == 1)
-				put_pixel_img(img, iter[0], iter[1], 0x00FFFACD);
-			else if (isin_julia(&c[0]) == 0)
-				put_pixel_img(img, iter[0], iter[1], 0x00FF9999);
+			c[0] = -3.0 + (double)iter[0] * 6.0 / (double)size[0];
+			c[1] = 3.0 - (double)iter[1] * 6.0 / (double)size[1];
+			put_pixel_img(img, iter[0], iter[1], return_color(&c[0]));
 			iter[1] += 1;
 		}
 		iter[1] = 0;
@@ -61,16 +53,16 @@ static void	create_julia_image(t_data *img, int *size)
 	}
 }
 
-static int	isin_julia(double *c)
+static int	return_color(double *c)
 {
 	double	zn[2];
 	double	zn_prev[2];
 	int		iter;
 
 	iter = 0;
-	c[0] = 0.0;
-	c[1] = 0.0;
-	while (iter < 100)
+	zn[0] = 0.0;
+	zn[1] = 0.0;
+	while (iter < 100 && zn[0] * zn[0] + zn[1] * zn[1] < 4)
 	{
 		zn_prev[0] = zn[0];
 		zn_prev[1] = zn[1];
@@ -79,7 +71,7 @@ static int	isin_julia(double *c)
 		iter += 1;
 	}
 	if (zn[0] * zn[0] + zn[1] * zn[1] < 4)
-		return (1);
+		return (0x00FFFACD);
 	else
-		return (0);
+		return (0x006A5ACD + (zn[0] * zn[0] + zn[1] * zn[1]) * 1.2);
 }

@@ -6,12 +6,11 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 19:36:08 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/26 19:40:49 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/28 17:33:46 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
 
 void	mlx_window_options(t_vars *vars, t_data *img)
 {

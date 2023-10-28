@@ -6,13 +6,13 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 19:42:59 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/28 17:21:21 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/28 17:32:20 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static void	create_mandel_image(t_data *img, int *size);
+static void	create_mandelbrot_image(t_data *img, int *size);
 static int	return_color(double *c);
 
 void	mandelbrot_operation(void)
@@ -28,28 +28,23 @@ void	mandelbrot_operation(void)
 	init_data(vars.mlx, &img);
 	if (img.img == NULL)
 		exit(1);
-	create_mandel_image(&img, &size[0]);
+	create_mandelbrot_image(&img, &size[0]);
 	mlx_window_options(&vars, &img);
 }
 
-static void	create_mandel_image(t_data *img, int *size)
+static void	create_mandelbrot_image(t_data *img, int *size)
 {
 	double	c[2];
 	int		iter[2];
-	int		one_side;
 
 	iter[0] = 0;
 	iter[1] = 0;
-	if (size[0] < size[1])
-		one_side = size[0];
-	else
-		one_side = size[1];
 	while (iter[0] < size[0])
 	{
 		while (iter[1] < size[1])
 		{
-			c[0] = -2.0 + (double)iter[0] * 4.0 / (double)one_side;
-			c[1] = 2.0 - (double)iter[1] * 4.0 / (double)one_side;
+			c[0] = -3.0 + (double)iter[0] * 6.0 / (double)size[0];
+			c[1] = 3.0 - (double)iter[1] * 6.0 / (double)size[1];
 			put_pixel_img(img, iter[0], iter[1], return_color(&c[0]));
 			iter[1] += 1;
 		}
