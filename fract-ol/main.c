@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 15:30:21 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/28 16:21:59 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/28 17:40:51 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,14 @@ int	main(int argc, char *argv[])
 	double	parameter[2];
 
 	which_set = check_which_set(argc, argv[1]);
-	parameter[0] = ft_atof(argv[2]);
-	parameter[1] = ft_atof(argv[3]);
-	printf("%f, %f\n", parameter[0], parameter[1]);
 	if (hypot(parameter[0], parameter[1]) > 2)
 		show_input_choice();
 	if (which_set == 1)
-		julia_operation();
+	{
+		parameter[0] = ft_atof(argv[2]);
+		parameter[1] = ft_atof(argv[3]);
+		julia_operation(&parameter[0]);
+	}
 	else if (which_set == 2)
 		mandelbrot_operation();
 	return (0);
@@ -34,27 +35,32 @@ int	main(int argc, char *argv[])
 
 static int	check_which_set(int argc, char *argv)
 {
-	if (argc != 4)
-		show_input_choice();
 	if (argv == NULL)
 		exit(1);
 	if (ft_strcmp(argv, "julia") == 0 && ft_strcmp(argv, "mandelbrot") == 0)
 		show_input_choice();
 	if (ft_strcmp(argv, "julia") == 1)
+	{
+		if (argc != 4)
+			show_input_choice();
 		return (1);
+	}
 	if (ft_strcmp(argv, "mandelbrot") == 1)
+	{
+		if (argc != 2)
+			show_input_choice();
 		return (2);
+	}
 	exit(0);
 }
 
 void	show_input_choice(void)
 {
 	ft_printf("Input should follow either of the formats below\n");
-	ft_printf("1: mandelbrot <real part> <imaginary part>\n");
+	ft_printf("1: mandelbrot\n");
 	ft_printf("2: julia <real part> <imaginary part>\n");
 	ft_printf("\n");
 	ft_printf("Attention:\n");
-	ft_printf("mandelbrot set |zk| should be in range of -2 - 2\n");
 	ft_printf("julia set parameter should be \n");
 	exit(0);
 }
