@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 22:28:42 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/28 18:02:50 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/30 18:34:52 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	create_julia_image(t_data *img, int *size, double *z0);
 static int	return_color(double *c, double *z0);
 
-void	julia_operation(double *z0)
+void	julia_operation(double *c)
 {
 	t_vars	vars;
 	t_data	img;
@@ -28,13 +28,13 @@ void	julia_operation(double *z0)
 	init_data(vars.mlx, &img);
 	if (img.img == NULL)
 		exit(1);
-	create_julia_image(&img, &size[0], z0);
+	create_julia_image(&img, &size[0], c);
 	mlx_window_options(&vars, &img);
 }
 
-static void	create_julia_image(t_data *img, int *size, double *z0)
+static void	create_julia_image(t_data *img, int *size, double *c)
 {
-	double	c[2];
+	double	z0[2];
 	int		iter[2];
 
 	iter[0] = 0;
@@ -43,9 +43,9 @@ static void	create_julia_image(t_data *img, int *size, double *z0)
 	{
 		while (iter[1] < size[1])
 		{
-			c[0] = -3.0 + (double)iter[0] * 6.0 / (double)size[0];
-			c[1] = 3.0 - (double)iter[1] * 6.0 / (double)size[1];
-			put_pixel_img(img, iter[0], iter[1], return_color(&c[0], z0));
+			z0[0] = -3.0 + (double)iter[0] * 6.0 / (double)size[0];
+			z0[1] = 3.0 - (double)iter[1] * 6.0 / (double)size[1];
+			put_pixel_img(img, iter[0], iter[1], return_color(c, &z0[0]));
 			iter[1] += 1;
 		}
 		iter[1] = 0;
