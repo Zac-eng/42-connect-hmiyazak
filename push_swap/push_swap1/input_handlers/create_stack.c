@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 20:18:50 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/14 14:18:44 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/31 22:39:00 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@ t_stack	*create_stack(int node_num, int argc, char **argv)
 	int		*node_list;
 	int		iterator;
 
+	if (argv == NULL)
+		exit(1);
 	iterator = 0;
 	node_list = (int *)malloc(sizeof(int) * node_num);
-	if (node_list == 0)
+	if (node_list == NULL)
 		exit(1);
 	stack = initialize_stack(node_num);
 	create_input_list(argc, argv, node_list);
@@ -58,10 +60,12 @@ static int	is_sorted(int node_num, int *input_list)
 {
 	int	index;
 
+	if (input_list == NULL)
+		exit(1);
 	index = 0;
 	while (index < node_num - 1)
 	{
-		if (input_list[index + 1] != input_list[index] + 1)
+		if (input_list[index] > input_list[index + 1])
 			return (0);
 		else
 			index += 1;

@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 14:37:03 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/11 22:39:04 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/17 02:13:25 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	push_top(t_stack *stack, int new_element)
 	new_node = (t_node *)malloc(sizeof(t_node) * 1);
 	if (stack == NULL || new_node == NULL)
 		exit(1);
-	new_node->previous = NULL;
+	new_node->prev = NULL;
 	new_node->body = new_element;
 	new_node->next = NULL;
 	if (stack->current_size == 0)
@@ -30,7 +30,7 @@ void	push_top(t_stack *stack, int new_element)
 	else
 	{
 		stack->top->next = new_node;
-		new_node->previous = stack->top;
+		new_node->prev = stack->top;
 		stack->top = new_node;
 	}
 	stack->current_size += 1;
@@ -43,7 +43,7 @@ void	push_bottom(t_stack *stack, int new_element)
 	new_node = (t_node *)malloc(sizeof(t_node) * 1);
 	if (stack == NULL || new_node == NULL)
 		exit(1);
-	new_node->previous = NULL;
+	new_node->prev = NULL;
 	new_node->body = new_element;
 	new_node->next = NULL;
 	if (stack->current_size == 0)
@@ -53,7 +53,7 @@ void	push_bottom(t_stack *stack, int new_element)
 	}
 	else
 	{
-		stack->bottom->previous = new_node;
+		stack->bottom->prev = new_node;
 		new_node->next = stack->bottom;
 		stack->bottom = new_node;
 	}
@@ -75,7 +75,10 @@ int	pop_top(t_stack *stack)
 		stack->bottom = NULL;
 	}
 	else
-		stack->top = poped_node->previous;
+	{
+		stack->top = poped_node->prev;
+		stack->top->next = NULL;
+	}
 	stack->current_size -= 1;
 	free(poped_node);
 	return (poped_element);
@@ -96,7 +99,10 @@ int	pop_bottom(t_stack *stack)
 		stack->bottom = NULL;
 	}
 	else
+	{
 		stack->bottom = poped_node->next;
+		stack->bottom->prev = NULL;
+	}
 	stack->current_size -= 1;
 	free(poped_node);
 	return (poped_element);

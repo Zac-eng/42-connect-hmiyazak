@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 12:22:07 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/14 23:07:44 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/31 22:48:56 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,23 @@ int	main(int argc, char *argv[])
 	else if (node_num == 5)
 		five_nodes_operation(stack_a, stack_b);
 	else
-		many_nodes_operation(node_num, stack_a, stack_b);
-	while (stack_a->top)
-	{
-		printf("a: %d\n", stack_a->top->body);
-		stack_a->top = stack_a->top->previous;
-	}
+		many_nodes_operation(stack_a, stack_b);
 	free_stack(stack_a);
 	free_stack(stack_b);
 	return (0);
 }
+// __attribute((destructor)) static void destructor()
+// {
+//     system("leaks -q push_swap");
+// }
 
 static int	count_node(int argc, char **argv)
 {
 	int		node_num;
 	char	*num_set;
 
+	if (argv == NULL || argv[1] == NULL)
+		exit(1);
 	node_num = 0;
 	num_set = argv[1];
 	if (argc <= 1)
@@ -79,7 +80,7 @@ static void	free_stack(t_stack *should_be_free)
 	while (should_be_free->top)
 	{
 		current_position = should_be_free->top;
-		should_be_free->top = should_be_free->top->previous;
+		should_be_free->top = should_be_free->top->prev;
 		free(current_position);
 	}
 	free(should_be_free);

@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 20:44:12 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/10/14 13:34:31 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/10/17 22:44:43 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static void	rank_list(int list_size, int *destination, int *sorted_list)
 		{
 			if (destination[iterator] == sorted_list[index])
 			{
-				destination[iterator] = index + 1;
+				destination[iterator] = index;
 				break ;
 			}
 			index += 1;
