@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:39:25 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/11/04 14:44:16 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2023/11/04 15:11:46 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,11 @@
 # include <unistd.h>
 # include <sys/time.h>
 # include <pthread.h>
+
+int	take_fork(int timestamp, int philo_num);
+int	start_eating(int timestamp, int philo_num);
+int	start_sleeping(int timestamp, int philo_num);
+int	start_thinking(int timestamp, int philo_num);
+int	died(int timestamp, int philo_num);
 
 #endif
