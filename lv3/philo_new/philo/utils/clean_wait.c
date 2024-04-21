@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 22:18:02 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/11/27 13:42:57 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2024/04/21 18:35:08 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	wait_action(double wait_time_ms, t_table *table)
 	get_time_ms(&action_start);
 	while (iter < 8)
 	{
-		if (table->all_alive == 1)
+		if (get_allalive(table) == 1)
 			usleep(wait_time_ms * 100);
 		else
 			return (1);

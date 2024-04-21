@@ -6,16 +6,16 @@
 #    By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/04 14:47:24 by hmiyazak          #+#    #+#              #
-#    Updated: 2023/11/27 14:17:29 by hmiyazak         ###   ########.fr        #
+#    Updated: 2024/04/21 18:54:08 by hmiyazak         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-# CFLAGS += -g -fsanitize=thread
+CFLAGS += -g -fsanitize=thread
 RM = rm -rf
-SRCS = main.c philo.c actions.c mutex_ops.c utils/pos_atoi.c utils/time_ms.c utils/clean_wait.c
+SRCS = main.c philo.c actions.c mutex_ops.c utils/pos_atoi.c utils/time_ms.c utils/clean_wait.c utils/handle_allalive.c
 OBJS = $(SRCS:.c=.o)
 
 %.o: %.c

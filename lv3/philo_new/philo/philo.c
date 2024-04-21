@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 21:08:16 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/12/18 16:46:21 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2024/04/21 18:37:10 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ int	philo_simulation(t_table *table)
 		actor->last_eat = table->start_time;
 		if (pthread_create(actor->where, NULL, philo_action, actor) != 0)
 		{
-			if (pthread_mutex_lock(&(table->alive_mutex)) == 0)
-				table->all_alive = 0;
+			switch_allalive(table);
 			join_philos(table->philos, iter);
 			return (-1);
 		}

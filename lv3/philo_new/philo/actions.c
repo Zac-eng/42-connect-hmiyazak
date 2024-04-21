@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:56:24 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/11/27 14:07:21 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2024/04/21 18:51:35 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,14 @@ int	take_fork(t_philo *philo, t_table *table)
 	if (get_time_ms(&c_time) != 0)
 		return (-1);
 	timestamp = create_timestamp(c_time, table);
-	if (c_time - philo->last_eat < table->time_d_e_s[0] && table->all_alive)
+	if (c_time - philo->last_eat < table->time_d_e_s[0] && \
+									get_allalive(table) == 1)
 	{
 		printf("%f %d has taken a fork\n", timestamp, philo->philo_id);
 		return (0);
 	}
 	unlock_forks(philo);
-	if (table->all_alive == 1)
+	if (get_allalive(table) == 1)
 	{
 		died(philo->philo_id, table);
 		return (1);
@@ -59,7 +60,7 @@ int	start_eating(t_philo *philo, t_table *table)
 	get_time_ms(&(philo->last_eat));
 	if (unlock_forks(philo) != 0)
 		return (-1);
-	if (table->all_alive == 0)
+	if (get_allalive(table) == 0)
 		return (2);
 	return (0);
 }
@@ -80,7 +81,7 @@ int	start_sleeping(t_philo *philo, t_table *table)
 		died(philo->philo_id, table);
 		return (1);
 	}
-	else if (table->all_alive == 0)
+	else if (get_allalive(table) == 0)
 		return (2);
 	return (0);
 }
@@ -108,15 +109,11 @@ int	died(int philo_id, t_table *table)
 		return (-1);
 	if (get_time_ms(&c_time) != 0)
 		return (-1);
-	if (pthread_mutex_lock(&(table->alive_mutex)) == 0)
+	if (get_allalive(table) == 1)
 	{
-		if (table->all_alive == 1)
-		{
-			table->all_alive = 0;
-			timestamp = create_timestamp(c_time, table);
-			printf("%f %d died\n", timestamp, philo_id);
-		}
-		pthread_mutex_unlock(&(table->alive_mutex));
+		switch_allalive(table);
+		timestamp = create_timestamp(c_time, table);
+		printf("%f %d died\n", timestamp, philo_id);
 	}
 	return (0);
 }
