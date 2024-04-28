@@ -6,13 +6,13 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:39:31 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/12/18 16:42:51 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2024/04/28 22:11:27 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static int	get_times(int argc, char **argv, double *vars);
+static int	get_times(int argc, char **argv, long int *vars);
 static int	create_table(int argc, char **argv, t_table *table);
 static int	allocate_philos(t_table *table);
 static void	free_philos(t_philo *philos, int philo_num);
@@ -36,20 +36,20 @@ int	main(int argc, char *argv[])
 	pthread_mutex_destroy(&table.alive_mutex);
 	return (0);
 }
-// __attribute((destructor)) static void destructor()
-// {
-//     system("leaks -q philo");
-// }
+__attribute((destructor)) static void destructor()
+{
+    system("leaks -q philo");
+}
 
-static int	get_times(int argc, char **argv, double *vars)
+static int	get_times(int argc, char **argv, long int *vars)
 {
 	if (argv == NULL || vars == NULL)
 		return (-1);
 	if (argc != 5 && argc != 6)
 		return (-1);
-	vars[0] = (double)pos_atoi(argv[2]);
-	vars[1] = (double)pos_atoi(argv[3]);
-	vars[2] = (double)pos_atoi(argv[4]);
+	vars[0] = (long int)pos_atoi(argv[2]);
+	vars[1] = (long int)pos_atoi(argv[3]);
+	vars[2] = (long int)pos_atoi(argv[4]);
 	if (vars[0] < 0 || vars[1] < 0 || vars[2] < 0)
 		return (-1);
 	return (0);

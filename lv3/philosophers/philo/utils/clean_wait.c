@@ -6,20 +6,20 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 22:18:02 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/11/27 13:42:57 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2024/04/28 21:51:10 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
-static int	wait_action(double wait_time_ms, t_table *table);
-static int	set_action(char *action, double *set_time, double *time_d_e_s);
+static int	wait_action(long int wait_time_ms, t_table *table);
+static int	set_action(char *action, long int *set_time, long int *time_d_e_s);
 static int	ft_strcmp(char *lhs, char *rhs);
 
-int	clean_wait(double not_eat, t_table *table, char *action)
+int	clean_wait(long int not_eat, t_table *table, char *action)
 {
-	double	action_time;
-	double	die_time;
+	long int	action_time;
+	long int	die_time;
 
 	die_time = table->time_d_e_s[0];
 	if (set_action(action, &action_time, &(table->time_d_e_s[0])) != 0)
@@ -30,29 +30,29 @@ int	clean_wait(double not_eat, t_table *table, char *action)
 		return (wait_action(table->time_d_e_s[0] - not_eat, table) + 1);
 }
 
-static int	wait_action(double wait_time_ms, t_table *table)
+static int	wait_action(long int wait_time_ms, t_table *table)
 {
-	double	action_start;
-	double	time;
-	int		iter;
+	long int	action_start;
+	long int	time;
+	long int	waited;
 
-	iter = 0;
+	waited = 0;
 	get_time_ms(&action_start);
-	while (iter < 8)
+	while (waited + 45 < wait_time_ms)
 	{
-		if (table->all_alive == 1)
-			usleep(wait_time_ms * 100);
+		if (get_allalive(table) == 1)
+			usleep(10000);
 		else
 			return (1);
-		iter += 1;
+		waited += 10;
 	}
 	get_time_ms(&time);
-	if (action_start + wait_time_ms - time > 0)
-		usleep((action_start + wait_time_ms - time) * 1000);
+	while (time < action_start + wait_time_ms)
+		get_time_ms(&time);
 	return (0);
 }
 
-static int	set_action(char *action, double *set_time, double *time_d_e_s)
+static int	set_action(char *action, long int *set_time, long int *time_d_e_s)
 {
 	if (ft_strcmp(action, "eat") == 1)
 	{
