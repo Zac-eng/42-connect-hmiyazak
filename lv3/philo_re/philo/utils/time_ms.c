@@ -6,11 +6,11 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 14:47:44 by hmiyazak          #+#    #+#             */
-/*   Updated: 2024/05/02 16:05:41 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2024/05/02 16:41:49 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.h"
+#include "philo.h"
 
 int	get_time_ms(long int *time)
 {

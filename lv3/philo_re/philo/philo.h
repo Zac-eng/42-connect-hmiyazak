@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:39:25 by hmiyazak          #+#    #+#             */
-/*   Updated: 2024/05/02 15:42:12 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2024/05/02 16:37:21 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,30 @@ typedef struct s_table {
 	t_mutex		start_time_mutex;
 }	t_table;
 
+void		monitor(t_table *table);
+int			philo_simulation(t_table *table);
+int			create_table(int argc, char **argv, t_table *table);
+t_mutex		*create_forks(int philo_num);
+void		*destruct_mutexes(t_mutex *mutexes, int mutex_num);
+int			pos_atoi(char *str);
+void		join_philos(t_philo *philos, int philo_num);
+int			get_time_ms(long int *time);
+long int	create_timestamp(long int c_time, t_table *table);
+int			wait_action(long int wait_time_ms, t_table *table);
+int			lock_forks(t_philo *philo);
+int			unlock_forks(t_philo *philo);
+int			take_fork(t_philo *philo, t_table *table);
+int			start_eating(t_philo *philo, t_table *table);
+int			start_sleeping(t_philo *philo, t_table *table);
+int			start_thinking(t_philo *philo, t_table *table);
+int			died(int philo_id, t_table *table);
+int			pos_atoi(char *str);
+int			get_allalive(t_table *table);
+int			get_time(t_table *table, const char which_time);
+int			get_num_eat(t_table *table);
+long int	get_start_time(t_table *table);
+long int	get_last_eat(t_philo *philo);
+void		switch_allalive(t_table *table);
+int			update_last_eat(t_philo *philo);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 15:55:00 by hmiyazak          #+#    #+#             */
-/*   Updated: 2024/05/02 16:04:00 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2024/05/02 16:44:54 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int	update_last_eat(t_philo *philo)
 			pthread_mutex_unlock(&philo->last_eat_mutex);
 			return (-1);
 		}
-		else
-			return (0);
+		pthread_mutex_unlock(&philo->last_eat_mutex);
+		return (0);
 	}
 	else
 		return (-1);

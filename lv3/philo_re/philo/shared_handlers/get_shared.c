@@ -6,11 +6,11 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 18:20:02 by hmiyazak          #+#    #+#             */
-/*   Updated: 2024/05/02 15:58:04 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2024/05/02 16:41:44 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.h"
+#include "philo.h"
 
 int	get_allalive(t_table *table)
 {
