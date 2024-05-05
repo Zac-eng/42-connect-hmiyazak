@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 15:55:00 by hmiyazak          #+#    #+#             */
-/*   Updated: 2024/05/02 16:44:54 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2024/05/05 18:49:21 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,19 @@
 
 void	switch_allalive(t_table *table)
 {
-	if (pthread_mutex_lock(&table->alive_mutex) == 0)
+	if (pthread_mutex_lock(&table->finished_mutex) == 0)
 	{
-		if (table->all_alive == 1)
-			table->all_alive = 0;
-		pthread_mutex_unlock(&table->alive_mutex);
+		table->num_finished = get_philonum(table);
+		pthread_mutex_unlock(&table->finished_mutex);
+	}
+}
+
+void	increment_finishedeat(t_table *table)
+{
+	if (pthread_mutex_lock(&table->finished_mutex) == 0)
+	{
+		table->num_finished++;
+		pthread_mutex_unlock(&table->finished_mutex);
 	}
 }
 

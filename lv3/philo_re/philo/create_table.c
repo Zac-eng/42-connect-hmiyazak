@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 18:20:25 by hmiyazak          #+#    #+#             */
-/*   Updated: 2024/05/02 15:45:35 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2024/05/05 18:56:27 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	create_table(int argc, char **argv, t_table *table)
 {
 	if (argv == NULL || table == NULL || (argc != 5 && argc != 6))
 		return (-1);
-	table->all_alive = 1;
+	table->num_finished = 0;
 	table->philo_num = pos_atoi(argv[1]);
 	if (table->philo_num < 0)
 		return (-1);
@@ -39,7 +39,7 @@ int	create_table(int argc, char **argv, t_table *table)
 		return (-1);
 	table->forks = create_forks(table->philo_num);
 	if (table->forks == NULL)
-		return (pthread_mutex_destroy(&(table->alive_mutex)) * 0 - 1);
+		return (destroy_table_mutexes(table) * 0 - 1);
 	return (0);
 }
 
@@ -59,25 +59,34 @@ static int	get_times(int argc, char **argv, long int *vars)
 
 static int	create_table_mutexes(t_table *table)
 {
-	if (pthread_mutex_init(&(table->alive_mutex), NULL) != 0)
+	if (pthread_mutex_init(&(table->finished_mutex), NULL) != 0)
 		return (-1);
 	if (pthread_mutex_init(&(table->time_mutex), NULL) != 0)
 	{
-		pthread_mutex_destroy(&(table->alive_mutex));
+		pthread_mutex_destroy(&(table->finished_mutex));
 		return (-1);
 	}
-	if (pthread_mutex_init(&(table->num_eat_mutex), NULL) != 0)
+	if (pthread_mutex_init(&(table->philonum_mutex), NULL) != 0)
 	{
 		pthread_mutex_destroy(&(table->time_mutex));
-		pthread_mutex_destroy(&(table->alive_mutex));
+		pthread_mutex_destroy(&(table->finished_mutex));
 		return (-1);
 	}
 	if (pthread_mutex_init(&(table->start_time_mutex), NULL) != 0)
 	{
-		pthread_mutex_destroy(&(table->num_eat_mutex));
+		pthread_mutex_destroy(&(table->philonum_mutex));
 		pthread_mutex_destroy(&(table->time_mutex));
-		pthread_mutex_destroy(&(table->alive_mutex));
+		pthread_mutex_destroy(&(table->finished_mutex));
 		return (-1);
 	}
+	return (0);
+}
+
+int	destroy_table_mutexes(t_table *table)
+{
+	pthread_mutex_destroy(&(table->philonum_mutex));
+	pthread_mutex_destroy(&(table->time_mutex));
+	pthread_mutex_destroy(&(table->finished_mutex));
+	pthread_mutex_destroy(&(table->start_time_mutex));
 	return (0);
 }

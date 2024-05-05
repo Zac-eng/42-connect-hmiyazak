@@ -6,14 +6,14 @@
 #    By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/04 14:47:24 by hmiyazak          #+#    #+#              #
-#    Updated: 2024/05/02 16:45:26 by hmiyazak         ###   ########.fr        #
+#    Updated: 2024/05/05 18:58:27 by hmiyazak         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I.
-# CFLAGS += -g -fsanitize=thread
+CFLAGS += -g -fsanitize=thread
 RM = rm -rf
 SRCS = 	main.c\
 		philo.c\

@@ -6,21 +6,21 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 18:20:02 by hmiyazak          #+#    #+#             */
-/*   Updated: 2024/05/02 16:41:44 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2024/05/05 18:28:45 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	get_allalive(t_table *table)
+int	get_numfinished(t_table *table)
 {
-	int	all_alive;
+	int	num_finished;
 
-	if (pthread_mutex_lock(&table->alive_mutex) == 0)
+	if (pthread_mutex_lock(&table->finished_mutex) == 0)
 	{
-		all_alive = table->all_alive;
-		pthread_mutex_unlock(&table->alive_mutex);
-		return (all_alive);
+		num_finished = table->num_finished;
+		pthread_mutex_unlock(&table->finished_mutex);
+		return (num_finished);
 	}
 	else
 		return (-1);
@@ -46,15 +46,15 @@ int	get_time(t_table *table, const char which_time)
 	return (retval);
 }
 
-int	get_num_eat(t_table *table)
+int	get_philonum(t_table *table)
 {
-	int	num_eat;
+	int	philonum;
 
-	if (pthread_mutex_lock(&table->num_eat_mutex) == 0)
+	if (pthread_mutex_lock(&table->philonum_mutex) == 0)
 	{
-		num_eat = table->num_eat;
-		pthread_mutex_unlock(&table->num_eat_mutex);
-		return (num_eat);
+		philonum = table->philo_num;
+		pthread_mutex_unlock(&table->philonum_mutex);
+		return (philonum);
 	}
 	else
 		return (-1);

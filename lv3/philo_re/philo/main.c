@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:39:31 by hmiyazak          #+#    #+#             */
-/*   Updated: 2024/04/29 18:54:22 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2024/05/05 18:54:53 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ int	main(int argc, char *argv[])
 	else if (allocate_philos(&table) != 0)
 		;
 	else if (philo_simulation(&table) == 0)
-		join_philos(table.philos, table.philo_num);
+		join_philos(table.philos, get_philonum(&table));
+	switch_allalive(&table);
 	destruct_mutexes(table.forks, table.philo_num);
-	pthread_mutex_destroy(&table.alive_mutex);
-	pthread_mutex_destroy(&table.time_mutex);
+	destroy_table_mutexes(&table);
 	return (0);
 }
 // __attribute((destructor)) static void destructor()
@@ -48,7 +48,7 @@ static int	allocate_philos(t_table *table)
 	table->philos = (t_philo *)malloc(sizeof(t_philo) * table->philo_num);
 	if (table->philos == NULL)
 		return (-1);
-	while (iter < table->philo_num)
+	while (iter < get_philonum(table))
 	{
 		table->philos[iter].table = table;
 		table->philos[iter].where = (t_thread *)malloc(sizeof(t_thread));
