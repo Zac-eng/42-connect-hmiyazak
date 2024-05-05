@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 21:48:07 by hmiyazak          #+#    #+#             */
-/*   Updated: 2023/11/30 17:56:57 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2024/05/05 18:53:11 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	lock_forks(t_philo *philo)
 	if (philo == NULL || philo->table == NULL)
 		return (0);
 	table = philo->table;
-	set_fork_indexes(philo->philo_id, table->philo_num, &fork_index[0]);
+	set_fork_indexes(philo->philo_id, get_philonum(table), &fork_index[0]);
 	if (pthread_mutex_lock(&(table->forks[fork_index[0]])) != 0)
 		return (-1);
 	if (pthread_mutex_lock(&(table->forks[fork_index[1]])) != 0)
@@ -76,7 +76,7 @@ int	unlock_forks(t_philo *philo)
 		return (0);
 	table = philo->table;
 	fork_index[0] = philo->philo_id - 1;
-	if (philo->philo_id == philo->table->philo_num)
+	if (philo->philo_id == get_philonum(philo->table))
 		fork_index[1] = 0;
 	else
 		fork_index[1] = philo->philo_id;

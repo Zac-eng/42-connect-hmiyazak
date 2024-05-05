@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:39:25 by hmiyazak          #+#    #+#             */
-/*   Updated: 2024/05/02 16:37:21 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2024/05/05 18:56:36 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_table	t_table;
 
 typedef struct s_philo {
 	int			philo_id;
+	int			num_eat;
 	t_table		*table;
 	t_thread	*where;
 	t_mutex		last_eat_mutex;
@@ -35,12 +36,12 @@ typedef struct s_philo {
 
 typedef struct s_table {
 	int			philo_num;
+	t_mutex		philonum_mutex;
 	long int	time_d_e_s[3];
 	t_mutex		time_mutex;
 	int			num_eat;
-	t_mutex		num_eat_mutex;
-	int			all_alive;
-	t_mutex		alive_mutex;
+	int			num_finished;
+	t_mutex		finished_mutex;
 	t_philo		*philos;
 	t_mutex		*forks;
 	long int	start_time;
@@ -52,6 +53,7 @@ int			philo_simulation(t_table *table);
 int			create_table(int argc, char **argv, t_table *table);
 t_mutex		*create_forks(int philo_num);
 void		*destruct_mutexes(t_mutex *mutexes, int mutex_num);
+int			destroy_table_mutexes(t_table *table);
 int			pos_atoi(char *str);
 void		join_philos(t_philo *philos, int philo_num);
 int			get_time_ms(long int *time);
@@ -65,12 +67,13 @@ int			start_sleeping(t_philo *philo, t_table *table);
 int			start_thinking(t_philo *philo, t_table *table);
 int			died(int philo_id, t_table *table);
 int			pos_atoi(char *str);
-int			get_allalive(t_table *table);
+int			get_numfinished(t_table *table);
 int			get_time(t_table *table, const char which_time);
-int			get_num_eat(t_table *table);
+int			get_philonum(t_table *table);
 long int	get_start_time(t_table *table);
 long int	get_last_eat(t_philo *philo);
 void		switch_allalive(t_table *table);
+void		increment_finishedeat(t_table *table);
 int			update_last_eat(t_philo *philo);
 
 #endif

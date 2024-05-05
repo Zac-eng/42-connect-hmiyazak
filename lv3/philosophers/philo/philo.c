@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 21:08:16 by hmiyazak          #+#    #+#             */
-/*   Updated: 2024/04/28 22:07:20 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2024/05/05 22:54:42 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,37 +28,34 @@ int	philo_simulation(t_table *table)
 	{
 		actor = &(table->philos[iter]);
 		actor->philo_id = iter + 1;
+		actor->have_eaten = 0;
 		actor->last_eat = table->start_time;
+		if (pthread_mutex_init(&actor->philo_mutex, NULL) != 0)
+			return (-1);
 		if (pthread_create(actor->where, NULL, philo_action, actor) != 0)
 		{
 			switch_allalive(table);
 			join_philos(table->philos, iter);
+			pthread_mutex_destroy(&actor->philo_mutex);
 			return (-1);
 		}
 		iter += 1;
 	}
+	monitor(table);
 	return (0);
 }
 
 static void	*philo_action(void *philo)
 {
-	int			iter;
-	long int	cycle;
 	t_philo		*actor;
 	t_table		*table;
 
-	iter = 0;
 	actor = philo;
 	table = actor->table;
-	if (table->num_eat < 0)
-		cycle = LONG_MAX;
-	else
-		cycle = table->num_eat;
-	while (iter < cycle)
+	while (get_allalive(table) == 1)
 	{
 		if (philo_cycle(actor, table) == 1)
 			break ;
-		iter += 1;
 	}
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 16:27:27 by hmiyazak          #+#    #+#             */
-/*   Updated: 2024/05/02 16:48:58 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2024/05/05 18:58:14 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ void	monitor(t_table *table)
 	{
 		iter = 0;
 		get_time_ms(&c_time);
-		while (iter < table->philo_num)
+		while (iter < get_philonum(table))
 		{
-			if (get_allalive(table) == 0)
+			if (get_numfinished(table) == get_philonum(table))
 				return ;
 			last_eat = get_last_eat(&table->philos[iter]);
 			if (last_eat < 0)
@@ -37,6 +37,6 @@ void	monitor(t_table *table)
 			iter++;
 		}
 	}
-	switch_allalive(table);
+	return ;
 }
 

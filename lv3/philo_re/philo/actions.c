@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:56:24 by hmiyazak          #+#    #+#             */
-/*   Updated: 2024/05/02 16:20:22 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2024/05/05 19:00:01 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,11 @@ int	take_fork(t_philo *philo, t_table *table)
 	if (lock_forks(philo) != 0)
 		return (-1);
 	if (get_time_ms(&c_time) != 0)
+	{
+		unlock_forks(philo);
 		return (-1);
-	if (get_allalive(table) == 1)
+	}
+	if (get_numfinished(table) < get_philonum(table))
 	{
 		timestamp = create_timestamp(c_time, table);
 		printf("%ld %d has taken a fork\n", timestamp, philo->philo_id);
@@ -41,14 +44,21 @@ int	start_eating(t_philo *philo, t_table *table)
 	if (philo == NULL || table == NULL)
 		return (0);
 	if (get_time_ms(&c_time) != 0)
+	{
+		unlock_forks(philo);
 		return (-1);
+	}
 	timestamp = create_timestamp(c_time, table);
 	printf("%ld %d is eating\n", timestamp, philo->philo_id);
 	update_last_eat(philo);
-	wait_action(get_time(table, 'e'), table);
+	if (wait_action(get_time(table, 'e'), table) != 0)
+	{
+		unlock_forks(philo);
+		return (1);
+	}
 	if (unlock_forks(philo) != 0)
 		return (-1);
-	if (get_allalive(table) == 0)
+	if (get_numfinished(table) == get_philonum(table))
 		return (1);
 	return (0);
 }
@@ -62,10 +72,11 @@ int	start_sleeping(t_philo *philo, t_table *table)
 		return (0);
 	if (get_time_ms(&c_time) != 0)
 		return (-1);
+	if (get_numfinished(table) == get_philonum(table))
+		return (1);
 	timestamp = create_timestamp(c_time, table);
 	printf("%ld %d is sleeping\n", timestamp, philo->philo_id);
-	wait_action(get_time(table, 's'), table);
-	if (get_allalive(table) == 0)
+	if (wait_action(get_time(table, 's'), table) != 0)
 		return (1);
 	return (0);
 }
@@ -79,6 +90,8 @@ int	start_thinking(t_philo *philo, t_table *table)
 		return (0);
 	if (get_time_ms(&c_time) != 0)
 		return (-1);
+	if (get_numfinished(table) == get_philonum(table))
+		return (1);
 	timestamp = create_timestamp(c_time, table);
 	printf("%ld %d is thinking\n", timestamp, philo->philo_id);
 	return (0);
@@ -93,7 +106,7 @@ int	died(int philo_id, t_table *table)
 		return (-1);
 	if (get_time_ms(&c_time) != 0)
 		return (-1);
-	if (get_allalive(table) == 1)
+	if (get_numfinished(table) != get_philonum(table))
 	{
 		switch_allalive(table);
 		timestamp = create_timestamp(c_time, table);
