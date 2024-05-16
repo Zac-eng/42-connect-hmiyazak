@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 15:55:00 by hmiyazak          #+#    #+#             */
-/*   Updated: 2024/05/05 22:09:14 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2024/05/08 22:19:58 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	switch_allalive(t_table *table)
 {
+	if (table == NULL)
+		return ;
 	if (pthread_mutex_lock(&table->alive_mutex) == 0)
 	{
 		if (table->all_alive == 1)
@@ -24,6 +26,8 @@ void	switch_allalive(t_table *table)
 
 int	update_last_eat(t_philo *philo)
 {
+	if (philo == NULL)
+		return (-1);
 	if (pthread_mutex_lock(&philo->philo_mutex) == 0)
 	{
 		if (get_time_ms(&philo->last_eat) == -1)
@@ -41,6 +45,8 @@ int	update_last_eat(t_philo *philo)
 
 int	increment_have_eaten(t_philo *philo)
 {
+	if (philo == NULL)
+		return (-1);
 	if (pthread_mutex_lock(&philo->philo_mutex) == 0)
 	{
 		philo->have_eaten++;

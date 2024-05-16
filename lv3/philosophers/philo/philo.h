@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:39:25 by hmiyazak          #+#    #+#             */
-/*   Updated: 2024/05/05 23:14:10 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2024/05/06 20:15:41 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,9 @@ typedef struct s_philo {
 
 typedef struct s_table {
 	int			philo_num;
-	long int	time_d_e_s[3];
+	int			time_d_e_s[3];
 	t_mutex		time_mutex;
 	long int	num_eat;
-	t_mutex		num_eat_mutex;
 	int			all_alive;
 	t_mutex		alive_mutex;
 	t_philo		*philos;
@@ -55,7 +54,9 @@ t_mutex		*create_forks(int philo_num);
 void		*destruct_mutexes(t_mutex *mutexes, int mutex_num);
 int			pos_atoi(char *str);
 void		join_philos(t_philo *philos, int philo_num);
+int			destroy_table_mutexes(t_table *table);
 int			get_time_ms(long int *time);
+int			wait_until_start(t_table *table);
 long int	create_timestamp(long int c_time, t_table *table);
 int			wait_action(long int wait_time_ms, t_table *table);
 int			lock_forks(t_philo *philo);
@@ -74,5 +75,7 @@ long int	get_last_eat(t_philo *philo);
 void		switch_allalive(t_table *table);
 int			update_last_eat(t_philo *philo);
 int			increment_have_eaten(t_philo *philo);
+int			print_action(long int time, int id, t_table *table, char action);
+int			print_died(long int timestamp, int philo_id, t_table *table);
 
 #endif

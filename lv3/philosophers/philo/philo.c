@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 21:08:16 by hmiyazak          #+#    #+#             */
-/*   Updated: 2024/05/05 22:54:42 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2024/05/08 22:26:31 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,30 @@ static void	*philo_action(void *philo)
 	t_philo		*actor;
 	t_table		*table;
 
+	if (philo == NULL)
+		return (NULL);
 	actor = philo;
 	table = actor->table;
+	if (wait_until_start(table) < 0)
+		return (pthread_mutex_destroy(&actor->philo_mutex), NULL);
+	if (actor->philo_id % 2 == 0)
+		wait_action(get_time(table, 'e') / 2, table);
 	while (get_allalive(table) == 1)
 	{
 		if (philo_cycle(actor, table) == 1)
-			break ;
+		{
+			pthread_mutex_destroy(&actor->philo_mutex);
+			return (switch_allalive(table), NULL);
+		}
 	}
+	pthread_mutex_destroy(&actor->philo_mutex);
 	return (NULL);
 }
 
 static int	philo_cycle(t_philo *philo, t_table *table)
 {
+	if (table == NULL || philo == NULL)
+		return (1);
 	if (take_fork(philo, table) != 0)
 		return (1);
 	if (start_eating(philo, table) != 0)
@@ -83,11 +95,7 @@ void	join_philos(t_philo *philos, int philo_num)
 	while (iter < philo_num)
 	{
 		if (philos[iter].where != NULL)
-		{
 			pthread_join(*(philos[iter].where), NULL);
-			free(philos[iter].where);
-		}
 		iter += 1;
 	}
-	free(philos);
 }

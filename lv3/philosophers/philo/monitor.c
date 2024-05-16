@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 16:27:27 by hmiyazak          #+#    #+#             */
-/*   Updated: 2024/05/05 22:53:40 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2024/05/08 22:24:02 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ static int	check_finished(t_table *table, int philo_id)
 {
 	int	have_eaten;
 
+	if (table == NULL)
+		return (-1);
 	have_eaten = get_have_eaten(&table->philos[philo_id]);
 	if (have_eaten < 0)
 		return (-1);
@@ -60,6 +62,8 @@ static int	check_hunger(t_table *table, int philo_id, long int c_time)
 {
 	long int	last_eat;
 
+	if (table == NULL)
+		return (-1);
 	last_eat = get_last_eat(&table->philos[philo_id]);
 	if (last_eat < 0)
 		return (-1);

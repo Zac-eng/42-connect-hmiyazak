@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 14:47:44 by hmiyazak          #+#    #+#             */
-/*   Updated: 2024/05/05 22:06:09 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2024/05/08 22:18:47 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ long int	create_timestamp(long int c_time, t_table *table)
 {
 	long int	start_time;
 
+	if (table == NULL)
+		return (-1);
 	start_time = get_start_time(table);
 	if (start_time < 0)
 		return (-1);

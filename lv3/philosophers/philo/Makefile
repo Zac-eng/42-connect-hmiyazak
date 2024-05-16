@@ -6,7 +6,7 @@
 #    By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/04 14:47:24 by hmiyazak          #+#    #+#              #
-#    Updated: 2024/05/02 16:45:26 by hmiyazak         ###   ########.fr        #
+#    Updated: 2024/05/07 18:00:11 by hmiyazak         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS = 	main.c\
 		create_table.c\
 		monitor.c\
 		utils/pos_atoi.c\
+		utils/print_action.c\
 		utils/time_ms.c\
 		utils/wait_action.c\
 		shared_handlers/change_shared.c\

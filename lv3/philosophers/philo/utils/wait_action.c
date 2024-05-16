@@ -6,7 +6,7 @@
 /*   By: hmiyazak <hmiyazak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 22:18:02 by hmiyazak          #+#    #+#             */
-/*   Updated: 2024/05/05 22:41:39 by hmiyazak         ###   ########.fr       */
+/*   Updated: 2024/05/08 22:22:10 by hmiyazak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	wait_action(long int wait_time_ms, t_table *table)
 	long int	action_start;
 	long int	time;
 
+	if (table == NULL)
+		return (-1);
 	if (get_time_ms(&action_start) < 0)
 		return (-1);
 	if (get_time_ms(&time) < 0)
