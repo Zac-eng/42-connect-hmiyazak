@@ -1,9 +1,8 @@
-NAME=phonebook
+NAME=unnecessarywar
 CPP=c++
 CPPFLAGS=-Wall -Wextra -Werror -std=c++98
-SRCS= ./srcs/main.cpp ./srcs/add_func.cpp ./srcs/search_func.cpp
+SRCS= main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 OBJS= $(SRCS:.cpp=.o)
-INCLUDES= includes
 
 %.o: %.cpp
 	$(CC) $(CFLAGS) -I$(INCLUDES) -c $< -o $@

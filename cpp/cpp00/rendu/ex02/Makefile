@@ -1,7 +1,7 @@
 NAME=phonebook
 CPP=c++
 CPPFLAGS=-Wall -Wextra -Werror -std=c++98
-SRCS= ./srcs/main.cpp ./srcs/add_func.cpp ./srcs/search_func.cpp
+SRCS= 
 OBJS= $(SRCS:.cpp=.o)
 INCLUDES= includes
 
