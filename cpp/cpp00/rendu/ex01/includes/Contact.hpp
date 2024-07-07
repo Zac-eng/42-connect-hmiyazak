@@ -1,15 +1,23 @@
 #ifndef CONTACT_H
 # define CONTACT_H
 
+# include <string>
+# include <iostream>
+
 class Contact {
   public:
-    std::string first_name_;
-    std::string last_name_;
-    std::string nick_name_;
+    Contact(std::string fname, std::string lname, std::string nname, \
+            std::string phone_number, std::string secret);
+    ~Contact(void);
+    void	showContact(void);
+    void  showAbstruct(int index);
 
   private:
-    std::string phone_number_;
-    std::string darkest_secret_;
+    std::string _firstName;
+    std::string _lastName;
+    std::string _nickname;
+    std::string _phoneNumber;
+    std::string _darkestSecret;
 };
 
 #endif
