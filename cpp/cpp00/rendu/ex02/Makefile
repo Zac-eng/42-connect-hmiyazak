@@ -1,12 +1,11 @@
-NAME=phonebook
+NAME=account
 CPP=c++
 CPPFLAGS=-Wall -Wextra -Werror -std=c++98
-SRCS= 
+SRCS= ./tests.cpp ./Account.cpp
 OBJS= $(SRCS:.cpp=.o)
-INCLUDES= includes
 
 %.o: %.cpp
-	$(CC) $(CFLAGS) -I$(INCLUDES) -c $< -o $@
+	$(CPP) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 
