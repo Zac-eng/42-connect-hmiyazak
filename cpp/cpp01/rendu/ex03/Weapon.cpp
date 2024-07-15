@@ -1,5 +1,5 @@
-#include "Weapon.h"
+#include "Weapon.hpp"
 
 Weapon::Weapon(std::string type) {
-	this->type = type;
+	this->_type = type;
 }

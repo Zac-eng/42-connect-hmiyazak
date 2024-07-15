@@ -5,7 +5,7 @@ SRCS= main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 OBJS= $(SRCS:.cpp=.o)
 
 %.o: %.cpp
-	$(CC) $(CFLAGS) -I$(INCLUDES) -c $< -o $@
+	$(CPP) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 
