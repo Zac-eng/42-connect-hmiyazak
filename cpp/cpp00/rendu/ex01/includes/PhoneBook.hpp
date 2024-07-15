@@ -7,9 +7,8 @@ class PhoneBook {
   public:
     PhoneBook(void);
     ~PhoneBook(void);
-    void  addContact(std::string fname, std::string lname, std::string nname, \
-                    std::string phone_number, std::string secret);
-    void  showBookContacts(void);
+    bool  addContact(void);
+    bool  showBookContacts(void);
 
   private:
     Contact     *contacts_[8];

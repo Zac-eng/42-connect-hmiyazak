@@ -3,16 +3,11 @@
 static void display_in_ten(std::string str);
 
 void	Contact::showContact(void) {
-	display_in_ten(this->_firstName);
-	std::cout << '|';
-	display_in_ten(this->_lastName);
-	std::cout << '|';
-	display_in_ten(this->_nickname);
-	std::cout << '|';
-	display_in_ten(this->_phoneNumber);
-	std::cout << '|';
-	display_in_ten(this->_darkestSecret);
-	std::cout << std::endl;
+	std::cout << _firstName << std::endl;
+	std::cout << _lastName << std::endl;
+	std::cout << _nickname << std::endl;
+	std::cout << _phoneNumber << std::endl;
+	std::cout << _darkestSecret << std::endl;
 }
 
 void	Contact::showAbstruct(int index) {

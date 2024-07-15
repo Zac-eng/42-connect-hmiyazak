@@ -2,7 +2,7 @@
 #include <iostream>
 #include <locale>
 
-void put_str(std::string str);
+void put_capital_str(std::string str);
 
 int main(int argc, char *argv[])
 {
@@ -11,13 +11,13 @@ int main(int argc, char *argv[])
   else
   {
     for (int i = 1; i < argc; i++)
-      put_str(argv[i]);
+      put_capital_str(argv[i]);
     std::cout << std::endl;
   }
   return 0;
 }
 
-void put_str(std::string str)
+void put_capital_str(std::string str)
 {
   int index = 0;
   std::locale l = std::locale::classic();
