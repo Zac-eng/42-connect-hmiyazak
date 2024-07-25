@@ -6,7 +6,7 @@ OBJS= $(SRCS:.cpp=.o)
 INCLUDES= includes
 
 %.o: %.cpp
-	$(CPP) $(CFLAGS) -I$(INCLUDES) -c $< -o $@
+	$(CPP) $(CPPFLAGS) -I$(INCLUDES) -c $< -o $@
 
 all: $(NAME)
 

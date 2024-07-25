@@ -1,7 +1,7 @@
-NAME=zombie
+NAME=sed
 CPP=c++
 CPPFLAGS=-Wall -Wextra -Werror -std=c++98
-SRCS= ./main.cpp ./Zombie.cpp ./newZombie.cpp ./randomChump.cpp
+SRCS= main.cpp FileController.cpp readFile.cpp replaceWords.cpp writeFile.cpp
 OBJS= $(SRCS:.cpp=.o)
 
 %.o: %.cpp

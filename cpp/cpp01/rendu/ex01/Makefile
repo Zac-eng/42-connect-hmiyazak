@@ -5,7 +5,7 @@ SRCS= ./main.cpp ./Zombie.cpp ./zombieHorde.cpp
 OBJS= $(SRCS:.cpp=.o)
 
 %.o: %.cpp
-	$(CPP) $(CFLAGS) -c $< -o $@
+	$(CPP) $(CPPFLAGS) -c $< -o $@
 
 all: $(NAME)
 
