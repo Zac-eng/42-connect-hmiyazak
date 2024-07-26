@@ -12,7 +12,7 @@ Fixed::Fixed(const Fixed &object) {
 
 Fixed::Fixed(const int value) {
     std::cout << "Int constructor called" << std::endl;
-    _value = value << _fractional;
+    _value = value * (1 << _fractional);
 }
 
 Fixed::Fixed(const float value) {
@@ -36,7 +36,6 @@ Fixed::~Fixed(void) {
 }
 
 int Fixed::getRawBits(void) const {
-    std::cout << "getRawBits member function called" << std::endl;
     return this->_value;
 }
 void Fixed::setRawBits(int const raw) {
@@ -49,5 +48,5 @@ float Fixed::toFloat(void) const {
 }
 
 int Fixed::toInt(void) const {
-    return _value >> _fractional;
+    return _value / (1 << _fractional);
 }
