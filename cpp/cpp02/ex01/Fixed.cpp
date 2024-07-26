@@ -17,7 +17,7 @@ Fixed::Fixed(const int value) {
 
 Fixed::Fixed(const float value) {
     std::cout << "Float constructor called" << std::endl;
-    _value = value;
+    _value = static_cast<int>(value * (1 << _fractional));
 }
 
 Fixed& Fixed::operator = (const Fixed &object) {
