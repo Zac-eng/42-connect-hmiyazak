@@ -5,6 +5,10 @@
 # include <iostream>
 # include <cmath>
 
+# ifndef FUDGE_FACTOR
+#  define FUDGE_FACTOR 1
+# endif
+
 class Fixed {
 private:
     int _value;
@@ -15,27 +19,52 @@ public:
     Fixed(const int value);
     Fixed(const float value);
     ~Fixed(void);
-    Fixed& operator = (const Fixed &object);
-    Fixed& operator++();
-    Fixed operator++(int);
-    Fixed& operator--();
-    Fixed operator--(int);
-    int getRawBits(void) const;
-    void setRawBits(int const raw);
-    float toFloat(void) const;
-    int toInt(void) const;
+    Fixed&  operator = (const Fixed &object);
+    bool    operator > (const Fixed& compared) const;
+    bool    operator < (const Fixed& compared) const;
+    bool    operator >= (const Fixed& compared) const;
+    bool    operator <= (const Fixed& compared) const;
+    bool    operator == (const Fixed& compared) const;
+    bool    operator != (const Fixed& compared) const;
+    Fixed&  operator + (const Fixed& object);
+    Fixed&  operator - (const Fixed& object);
+    Fixed&  operator * (const Fixed& object);
+    Fixed&  operator / (const Fixed& object);
+    Fixed&  operator ++ ();
+    Fixed   operator ++ (int);
+    Fixed&  operator -- ();
+    Fixed   operator -- (int);
+    int     getRawBits(void) const;
+    void    setRawBits(int const raw);
+    float   toFloat(void) const;
+    int     toInt(void) const;
+    static Fixed&  min(Fixed& obj1, Fixed& obj2) {
+        if (obj1 > obj2)
+            return obj2;
+        else
+            return obj1;
+    }
+    static const Fixed&  min(const Fixed& obj1, const Fixed& obj2) {
+        if (obj1 > obj2)
+            return obj2;
+        else
+            return obj1;
+    }
+    static Fixed&  max(Fixed& obj1, Fixed& obj2) {
+        if (obj1 < obj2)
+            return obj2;
+        else
+            return obj1;
+    }
+    static const Fixed&  max(const Fixed& obj1, const Fixed& obj2) {
+        if (obj1 < obj2)
+            return obj2;
+        else
+            return obj1;
+    }
 };
 
-std::ostream& operator<<(std::ostream& out, const Fixed& object);
-Fixed& operator > (const Fixed& lhs, const Fixed& rhs);
-Fixed& operator < (const Fixed& lhs, const Fixed& rhs);
-Fixed& operator >= (const Fixed& lhs, const Fixed& rhs);
-Fixed& operator <= (const Fixed& lhs, const Fixed& rhs);
-Fixed& operator == (const Fixed& lhs, const Fixed& rhs);
-Fixed& operator != (const Fixed& lhs, const Fixed& rhs);
-Fixed& operator + (const Fixed& lhs, const Fixed& rhs);
-Fixed& operator - (const Fixed& lhs, const Fixed& rhs);
-Fixed& operator * (const Fixed& lhs, const Fixed& rhs);
-Fixed& operator / (const Fixed& lhs, const Fixed& rhs);
+std::ostream&   operator << (std::ostream& out, const Fixed& object);
+
 
 #endif
