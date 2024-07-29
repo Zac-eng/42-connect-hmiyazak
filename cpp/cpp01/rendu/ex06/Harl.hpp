@@ -6,6 +6,14 @@
 # include <cctype>
 # include <map>
 
+typedef enum {
+  DEBUG = 0,
+  INFO = 1,
+  WARNING = 2,
+  ERROR = 3,
+  OTHERS = 4
+} HarlLevel;
+
 class Harl
 {
 
@@ -15,7 +23,7 @@ private:
   void warning(void);
   void error(void);
 public:
-  void complain(std::string level);
+  void complain(HarlLevel level);
 
 };
 
