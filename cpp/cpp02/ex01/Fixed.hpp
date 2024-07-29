@@ -5,6 +5,10 @@
 # include <iostream>
 # include <cmath>
 
+# ifndef FUDGE_FACTOR
+#  define FUDGE_FACTOR 1
+# endif
+
 class Fixed {
 private:
     int _value;
