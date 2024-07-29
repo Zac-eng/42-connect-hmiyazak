@@ -8,7 +8,6 @@ Zombie* zombieHorde(int N, std::string name)
 
 	for (int i = 0; i < N; i++) {
 		new_zombie = new Zombie(name);
-		new_zombie->announce();
 		if (zombie_leader == NULL) {
 			zombie_leader = new_zombie;
 		}

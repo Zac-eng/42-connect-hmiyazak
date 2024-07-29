@@ -9,19 +9,13 @@ class Zombie {
 	public:
 		Zombie(std::string name);
 		~Zombie(void);
-		void	announce(void) const {
-			std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-		};
-		Zombie*	get_next(void) const {
-			return (next);
-		}
-		void	set_next(Zombie *next_zombie) {
-			next = next_zombie;
-		}
+		void	announce(void) const;
+		Zombie*	get_next(void) const;
+		void	set_next(Zombie *next_zombie);
 
 	private:
-		std::string	name;
-		Zombie		*next;
+		std::string	_name;
+		Zombie		*_next;
 };
 
 Zombie* zombieHorde(int N, std::string name);
