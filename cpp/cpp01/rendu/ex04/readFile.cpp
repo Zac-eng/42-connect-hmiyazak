@@ -2,7 +2,7 @@
 
 int FileController::readFile()
 {
-  std::ifstream infile(_filename);
+  std::ifstream infile(_filename.c_str());
 
   if (!infile.is_open()) {
     std::cerr << "Could not open " << _filename << std::endl;
