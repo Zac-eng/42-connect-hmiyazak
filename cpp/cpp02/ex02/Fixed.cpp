@@ -50,27 +50,21 @@ bool    Fixed::operator != (const Fixed& compared) const {
     return _value != compared.getRawBits();
 }
 
-Fixed&  Fixed::operator + (const Fixed& object) {
-    this->_value += object.getRawBits();
-    return *this;
-}
+Fixed   operator + (const Fixed& oper1, const Fixed& oper2) {
+    return Fixed(oper1.toFloat() + oper2.toFloat());
+};
 
-Fixed&  Fixed::operator - (const Fixed& object) {
-    this->_value -= object.getRawBits();
-    return *this;
-}
+Fixed   operator - (const Fixed& oper1, const Fixed& oper2) {
+    return Fixed(oper1.toFloat() - oper2.toFloat());
+};
 
-Fixed&  Fixed::operator * (const Fixed& object) {
-    this->_value *= object.getRawBits();
-    this->_value /= (1 << this->_fractional);
-    return *this;
-}
+Fixed   operator * (const Fixed& oper1, const Fixed& oper2) {
+    return Fixed(oper1.toFloat() * oper2.toFloat());
+};
 
-Fixed&  Fixed::operator / (const Fixed& object) {
-    this->_value /= object.getRawBits();
-    this->_value *= (1 << this->_fractional);
-    return *this;
-}
+Fixed   operator / (const Fixed& oper1, const Fixed& oper2) {
+    return Fixed(oper1.toFloat() / oper2.toFloat());
+};
 
 Fixed&  Fixed::operator ++ (void) {
     this->_value += 1;

@@ -10,11 +10,18 @@ int main( void ) {
     std::cout << a << std::endl;
     std::cout << b << std::endl;
     std::cout << Fixed::max( a, b ) << std::endl;
+
     std::cout << "---The test Added by hmiyazak---"  << std::endl;
     std::cout << Fixed(0) << std::endl;
     std::cout << Fixed(0.0f) << std::endl;
+    Fixed lhs(10);
+    Fixed rhs(3.3f);
+    std::cout << lhs - rhs << std::endl;
+    std::cout << "lhs:" << lhs << std::endl;
+    std::cout << "rhs:" << rhs << std::endl;
     std::cout << (Fixed(0) == Fixed(0.0f) ? "true" : "false") << std::endl;
     std::cout << (Fixed(0) == Fixed(0) ? "true" : "false") << std::endl;
     std::cout << (a < b ? "true" : "false") << std::endl;
+
     return 0;
 }

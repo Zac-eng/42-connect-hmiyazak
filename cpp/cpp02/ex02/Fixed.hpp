@@ -26,10 +26,6 @@ public:
     bool    operator <= (const Fixed& compared) const;
     bool    operator == (const Fixed& compared) const;
     bool    operator != (const Fixed& compared) const;
-    Fixed&  operator + (const Fixed& object);
-    Fixed&  operator - (const Fixed& object);
-    Fixed&  operator * (const Fixed& object);
-    Fixed&  operator / (const Fixed& object);
     Fixed&  operator ++ ();
     Fixed   operator ++ (int);
     Fixed&  operator -- ();
@@ -65,6 +61,9 @@ public:
 };
 
 std::ostream&   operator << (std::ostream& out, const Fixed& object);
-
+Fixed           operator + (const Fixed& oper1, const Fixed& oper2);
+Fixed           operator - (const Fixed& oper1, const Fixed& oper2);
+Fixed           operator * (const Fixed& oper1, const Fixed& oper2);
+Fixed           operator / (const Fixed& oper1, const Fixed& oper2);
 
 #endif
