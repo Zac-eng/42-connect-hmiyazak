@@ -12,7 +12,7 @@ private:
 public:
     Animal(void);
     Animal(Animal& object);
-    ~Animal();
+    virtual ~Animal();
     Animal& operator = (const Animal& object);
     inline std::string getType(void) const;
     inline void setType(const std::string& new_type);
